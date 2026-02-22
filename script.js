@@ -138,4 +138,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth <= 768) {
         navbar.style.padding = '15px 20px';
     }
+
+    // Handle mobile touch events for scatter photos
+    const scatterPhotos = document.querySelectorAll('.scatter-photo');
+
+    scatterPhotos.forEach(photo => {
+        // When touched, make it fully pop over the text
+        photo.addEventListener('touchstart', function (e) {
+            // Remove active class from all other photos first
+            scatterPhotos.forEach(p => p.classList.remove('mobile-active'));
+            // Add to the one being touched
+            this.classList.add('mobile-active');
+        }, { passive: true });
+
+    });
+
+    // Tap anywhere else on the document to dismiss the photo popup
+    document.addEventListener('touchstart', function (e) {
+        if (!e.target.classList.contains('scatter-photo')) {
+            scatterPhotos.forEach(p => p.classList.remove('mobile-active'));
+        }
+    }, { passive: true });
+
 });
