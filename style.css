@@ -279,6 +279,71 @@ a:hover {
     font-size: 1.1rem;
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+    transform: translateX(-50%) translateY(3px);
+}
+
+.scroll-text {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background-color: rgba(212, 175, 55, 0.3);
+    /* Base line in faded gold */
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--navy);
+    /* Moving navy line */
+    animation: scrollDrop 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes scrollDrop {
+    0% {
+        top: -100%;
+    }
+
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
 /* --- Sections Common --- */
 .section-title {
     font-size: 2.5rem;
@@ -730,6 +795,16 @@ a:hover {
     .hero-content {
         padding: 40px 20px;
         clip-path: none;
+        margin-bottom: 40px;
+    }
+
+    .scroll-indicator {
+        bottom: 15px;
+        transform: translateX(-50%) scale(0.85);
+    }
+
+    .scroll-indicator:hover {
+        transform: translateX(-50%) scale(0.85) translateY(3px);
     }
 
     .details-grid {
