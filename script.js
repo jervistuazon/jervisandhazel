@@ -151,6 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             this.classList.add('mobile-active');
         }, { passive: true });
 
+        // Revert back when touch is released
+        photo.addEventListener('touchend', function (e) {
+            this.classList.remove('mobile-active');
+        }, { passive: true });
+
+        photo.addEventListener('touchcancel', function (e) {
+            this.classList.remove('mobile-active');
+        }, { passive: true });
     });
 
     // Tap anywhere else on the document to dismiss the photo popup

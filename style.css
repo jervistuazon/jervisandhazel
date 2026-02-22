@@ -351,6 +351,10 @@ a:hover {
     cursor: pointer;
     z-index: 5;
     pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
 }
 
 .scatter-photo:hover,
