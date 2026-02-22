@@ -293,6 +293,133 @@ a:hover {
     color: var(--text-light);
 }
 
+/* --- Our Story Section & Photos --- */
+.story-section {
+    position: relative;
+    overflow: hidden;
+    /* Ensure photos don't bleed out of the section completely */
+    padding: 120px 20px;
+}
+
+.story-content-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto 0;
+    min-height: 500px;
+    /* Give enough height for the photos to scatter */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.story-text-box {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.3);
+    /* highly transparent white */
+    padding: 50px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* For Safari */
+    max-width: 600px;
+    pointer-events: none;
+    /* Allows mouse to hover photos right through the text */
+    user-select: none;
+    /* Makes text unhighlightable */
+}
+
+.scattered-photos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Removed z-index: 1 so child photos can pop out over the text box matching the root stacking context */
+}
+
+.scatter-photo {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    background-color: #ffffff;
+    padding: 15px 15px 35px 15px;
+    box-shadow: 2px 5px 15px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 5;
+    pointer-events: auto;
+    /* Explicitly required in case a parent ignores pointer events */
+}
+
+.scatter-photo:hover {
+    transform: scale(1.15) rotate(0deg) !important;
+    z-index: 50 !important;
+    box-shadow: 5px 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Positioning the individual photos */
+.photo-1 {
+    top: -20px;
+    left: -40px;
+    transform: rotate(-12deg);
+}
+
+.photo-2 {
+    bottom: -30px;
+    left: 40px;
+    transform: rotate(8deg);
+}
+
+.photo-3 {
+    top: 30px;
+    right: -30px;
+    transform: rotate(15deg);
+}
+
+.photo-4 {
+    bottom: 20px;
+    right: 50px;
+    transform: rotate(-6deg);
+}
+
+.photo-5 {
+    top: -60px;
+    right: 30%;
+    transform: rotate(4deg);
+    width: 180px;
+}
+
+.photo-6 {
+    top: 120px;
+    left: -80px;
+    transform: rotate(5deg);
+    width: 190px;
+}
+
+.photo-7 {
+    bottom: -60px;
+    right: -20px;
+    transform: rotate(12deg);
+    width: 200px;
+}
+
+.photo-8 {
+    bottom: 100px;
+    left: -50px;
+    transform: rotate(-8deg);
+    width: 180px;
+}
+
+.photo-9 {
+    top: 100px;
+    right: -60px;
+    transform: rotate(-10deg);
+    width: 190px;
+}
+
 /* --- Details Section --- */
 .details-grid {
     display: grid;
@@ -608,7 +735,33 @@ a:hover {
         padding: 70px 20px;
     }
 
-    .rsvp-form {
-        padding: 30px 20px;
+    .scattered-photos {
+        opacity: 0.2;
+        /* Fade them out so text is readable */
+        pointer-events: none;
+        /* Make entirely unclickable until we bring individual photos forward */
+    }
+
+    .scatter-photo {
+        pointer-events: auto;
+        /* Ensure individual images remain touchable */
+    }
+
+    .photo-1,
+    .photo-6,
+    .photo-8 {
+        left: -80px;
+    }
+
+    .photo-2,
+    .photo-3 {
+        right: -60px;
+    }
+
+    .photo-4,
+    .photo-5,
+    .photo-7,
+    .photo-9 {
+        right: -80px;
     }
 }

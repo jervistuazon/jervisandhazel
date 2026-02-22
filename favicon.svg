@@ -6,9 +6,8 @@
       <stop offset="100%" stop-color="#aa8c2c" />
     </linearGradient>
   </defs>
-  <!-- Navy Background -->
-  <rect width="100" height="100" rx="30" fill="#1f3750" />
-  <rect x="4" y="4" width="92" height="92" rx="26" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.6" />
+  <!-- White Circle Background -->
+  <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="url(#goldGradient)" stroke-width="2" />
   <!-- Gold Initials -->
   <text x="50%" y="65%" font-family="Georgia, serif" font-size="40" font-style="italic" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle">J<tspan font-size="28" fill="#e6c86a">&amp;</tspan>H</text>
 </svg>
