@@ -49,9 +49,9 @@ if %ERRORLEVEL% neq 0 (
     goto :end
 )
 
-:: Get the current date and time for the commit message
-for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set datetime=%%I
-set "commit_msg=Auto-sync: %datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2% %datetime:~8,2%:%datetime:~10,2%:%datetime:~12,2%"
+:: Get the current date and time for the commit message (using PowerShell instead of WMIC)
+for /f "usebackq tokens=*" %%i in (`powershell -NoProfile -Command "Get-Date -Format 'yyyy-MM-dd HH:mm:ss'"`) do set datetime=%%i
+set "commit_msg=Auto-sync: %datetime%"
 
 :: 4. Stage, Commit, and Push
 echo [INFO] Staging all changes...
