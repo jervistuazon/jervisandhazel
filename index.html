@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,6 +24,7 @@
             <li><a href="#story">Our Story</a></li>
             <li><a href="#details">Details</a></li>
             <li><a href="#location">Location</a></li>
+            <li><a href="#registry">Registry</a></li>
             <li><a href="#rsvp">RSVP</a></li>
         </ul>
         <div class="hamburger">
@@ -105,6 +107,21 @@
         </div>
     </section>
 
+    <!-- Registry Section -->
+    <section id="registry" class="section">
+        <div class="container text-center animate-on-scroll">
+            <h2 class="section-title">The Registry</h2>
+            <div class="gold-divider"></div>
+            <p class="section-text mb-4">
+                Many of you are traveling across the globe to celebrate with us in New York City, so your presence means
+                the world to us and is all we ask for.<br><br>
+                If you'd still like to contribute to our registry or our upcoming baby fund, it would be deeply
+                appreciated.
+            </p>
+            <button id="openRegistryModal" class="btn registry-btn">Contribute to the Baby Fund</button>
+        </div>
+    </section>
+
     <!-- RSVP Section -->
     <section id="rsvp" class="section bg-light">
         <div class="container text-center animate-on-scroll">
@@ -112,27 +129,34 @@
             <div class="gold-divider"></div>
             <p class="section-text mb-4">Please let us know if you'll be able to join us on our special day.</p>
 
-            <form class="rsvp-form animate-on-scroll" style="transition-delay: 0.2s;">
-                <input type="text" placeholder="Full Name(s)" required>
-                <input type="email" placeholder="Email Address" required>
+            <form class="rsvp-form animate-on-scroll" style="transition-delay: 0.2s;" id="rsvpForm">
+                <input type="hidden" name="access_key" value="fa786807-996b-4f3e-9791-e4c6b809796e">
+                <input type="hidden" name="subject" value="New Wedding RSVP Submission">
+                <input type="hidden" name="replyto" value="@">
+                <!-- Helps if we have an explicit email field mapped, Web3Forms automatically usually detects it -->
 
-                <select required>
+                <input type="text" name="Full Name" placeholder="Full Name(s)" required>
+                <input type="email" name="Email" placeholder="Email Address" required>
+
+                <select name="Attending" required>
                     <option value="" disabled selected>Will you be attending?</option>
-                    <option value="yes">Joyfully Accept</option>
-                    <option value="no">Regretfully Decline</option>
+                    <option value="Yes - Joyfully Accept">Joyfully Accept</option>
+                    <option value="No - Regretfully Decline">Regretfully Decline</option>
                 </select>
 
-                <select required>
+                <select name="Number of Guests" required>
                     <option value="" disabled selected>Number of Guests</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4+</option>
+                    <option value="4+">4+</option>
                 </select>
 
-                <textarea placeholder="Any dietary restrictions or special notes?" rows="4"></textarea>
+                <textarea name="Notes or Dietary Restrictions" placeholder="Any dietary restrictions or special notes?"
+                    rows="4"></textarea>
 
                 <button type="submit" class="btn">Send RSVP</button>
+                <p id="rsvpMessage" style="display:none; margin-top:15px; font-weight:500;"></p>
             </form>
         </div>
     </section>
@@ -142,6 +166,25 @@
         <p class="names-small">Jervis & Hazel</p>
         <p class="date">09 . 18 . 2027</p>
     </footer>
+
+    <!-- Registry Modal -->
+    <div id="registryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title">Baby Fund Contribution</h3>
+            <p class="modal-text">Thank you so much for your generosity. If you wish to contribute to our baby fund, you
+                may use the details below:</p>
+
+            <div class="bank-details">
+                <p><strong>Bank Name:</strong> Chase Bank</p>
+                <p><strong>Account Name:</strong> Jervis & Hazel Trust</p>
+                <p><strong>Account Number:</strong> 1234 5678 9012</p>
+                <p><strong>Routing Number:</strong> 098765432</p>
+            </div>
+
+            <p class="modal-note">We are truly grateful for your love and support as our family grows.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
