@@ -8,7 +8,7 @@ const files = fs.readdirSync(dir).filter(f => f.match(/\.(jpg|jpeg|png|heic)$/i)
 async function run() {
     let count = 1;
     for (const file of files) {
-        // Skip existing webp
+        if (file.toLowerCase() === 'heroshot.jpg') continue;
         if (file.endsWith('.webp')) continue;
 
         const inputPath = path.join(dir, file);
@@ -16,6 +16,8 @@ async function run() {
         console.log(`Converting ${file} to photo-${count}.webp...`);
         try {
             await sharp(inputPath)
+                .rotate() // Automatically rotate based on EXIF data if present
+                .resize({ width: 1200, withoutEnlargement: true }) // Optimize huge files
                 .webp({ quality: 80 })
                 .toFile(outputPath);
             count++;
@@ -23,7 +25,7 @@ async function run() {
             console.error(`Failed on ${file}:`, err.message);
         }
     }
-    console.log(`Done converting!`);
+    console.log(`Done converting! Total: ${count - 1} images.`);
 }
 
 run();

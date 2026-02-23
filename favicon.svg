@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#e6c86a" />
-      <stop offset="50%" stop-color="#d4af37" />
-      <stop offset="100%" stop-color="#aa8c2c" />
-    </linearGradient>
+    <style>
+      .initials { font-family: 'Georgia', serif; font-size: 55px; font-weight: bold; fill: #1f3750; }
+      .amp { font-size: 35px; font-style: italic; fill: #1f3750; }
+    </style>
   </defs>
   <!-- White Circle Background -->
-  <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="url(#goldGradient)" stroke-width="2" />
-  <!-- Gold Initials -->
-  <text x="50%" y="65%" font-family="Georgia, serif" font-size="40" font-style="italic" font-weight="bold" fill="url(#goldGradient)" text-anchor="middle">J<tspan font-size="28" fill="#e6c86a">&amp;</tspan>H</text>
+  <circle cx="50" cy="50" r="48" fill="#ffffff" />
+  <!-- Navy Initials -->
+  <text x="50" y="70" class="initials" text-anchor="middle">J<tspan class="amp">&amp;</tspan>H</text>
 </svg>
