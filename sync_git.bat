@@ -63,15 +63,39 @@ if %ERRORLEVEL% neq 0 (
     echo [INFO] No new changes to commit.
 )
 
-echo [INFO] Pushing changes to remote repository (main branch)...
-:: Ensure we are pushing to 'main'
+echo [INFO] Fetching latest changes from remote...
+git fetch origin main
+if %ERRORLEVEL% neq 0 (
+    echo.
+    echo [ERROR] Failed to fetch the latest changes from GitHub.
+    echo Check your internet connection and repository permissions.
+    goto :end
+)
+
+echo [INFO] Switching to main branch...
 git branch -M main
+
+git ls-remote --exit-code --heads origin main >nul 2>nul
+if %ERRORLEVEL% equ 0 (
+    echo [INFO] Rebasing local changes on top of origin/main...
+    git pull --rebase origin main
+    if %ERRORLEVEL% neq 0 (
+        echo.
+        echo [ERROR] Rebase failed. Resolve any conflicts, then run:
+        echo         git rebase --continue
+        echo or cancel it with:
+        echo         git rebase --abort
+        goto :end
+    )
+)
+
+echo [INFO] Pushing changes to remote repository (main branch)...
 git push -u origin main
 
 if %ERRORLEVEL% neq 0 (
     echo.
-    echo [ERROR] Failed to push changes to the remote repository. 
-    echo Please check your internet connection and GitHub permissions.
+    echo [ERROR] Failed to push changes to the remote repository.
+    echo The remote may have moved again after fetch, or your push was rejected.
     goto :end
 )
 
