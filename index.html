@@ -25,8 +25,7 @@
             <li><a href="#story">Our Story</a></li>
             <li><a href="#details">Details</a></li>
             <li><a href="#location">Location</a></li>
-            <li><a href="#registry">Registry</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="rsvp.html">RSVP</a></li>
         </ul>
         <div class="hamburger">
             <span class="bar"></span>
@@ -40,7 +39,7 @@
         <div class="hero-content animate-on-scroll">
             <div class="floral-frame">
                 <h1 class="names">Jervis <span class="ampersand">&amp;</span> Hazel</h1>
-                <p class="date">09 . 18 . 2027</p>
+                <p class="date">May. 9, 2026</p>
             </div>
         </div>
 
@@ -95,13 +94,13 @@
                 <div class="detail-card animate-on-scroll" style="transition-delay: 0.2s;">
                     <h3>The Ceremony</h3>
                     <p class="time">3:00 PM</p>
-                    <p>Saint Mary's Chapel<br>123 Wedding Lane<br>Greenville, CA 95947</p>
+                    <p>Asuncion's Private Dining<br>Outdoor Garden<br>6th St. Maligaya Village<br>San Fernando, Philippines 2000</p>
                 </div>
 
                 <div class="detail-card animate-on-scroll" style="transition-delay: 0.4s;">
                     <h3>The Reception</h3>
                     <p class="time">5:30 PM</p>
-                    <p>The Grand Estate<br>456 Celebration Blvd<br>Greenville, CA 95947</p>
+                    <p>Asuncion's Private Dining<br>Outdoor Garden<br>6th St. Maligaya Village<br>San Fernando, Philippines 2000</p>
                 </div>
             </div>
 
@@ -113,100 +112,29 @@
     <!-- Location & Map Section -->
     <section id="location" class="section">
         <div class="container text-center animate-on-scroll">
-            <h2 class="section-title">Locations</h2>
+            <h2 class="section-title">Location</h2>
             <div class="gold-divider"></div>
-            <p class="section-text mb-4">We've arranged for special accommodations for our out-of-town guests.</p>
+            <p class="section-text mb-4">Asuncion's Private Dining - Outdoor Garden<br>6th St. Maligaya Village, San Fernando, Philippines 2000</p>
 
             <!-- Mockup Map placeholder -->
             <div class="map-container animate-on-scroll" style="transition-delay: 0.2s;">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000!2d-121.0!3d40.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDAwJzAwLjAiTiAxMjHCsDAwJzAwLjAiVw!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus"
-                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+                    src="https://www.google.com/maps?q=Asuncion%27s+Private+Dining+Outdoor+Garden,+6th+St.+Maligaya+Village,+San+Fernando,+Philippines+2000&output=embed"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="hotels mt-4 animate-on-scroll" style="transition-delay: 0.4s;">
-                <h3>Recommended Accommodations</h3>
-                <p><strong>The Greenville Inn</strong> - <a href="#">Book lightly</a></p>
-                <p><strong>Valley Resort & Spa</strong> - <a href="#">Group rates available</a></p>
+                <h3>Venue</h3>
+                <p><strong>Asuncion's Private Dining</strong></p>
+                <p>Outdoor Garden</p>
+                <p>6th St. Maligaya Village, San Fernando, Philippines 2000</p>
             </div>
         </div>
     </section>
-
-    <!-- Registry Section -->
-    <section id="registry" class="section">
-        <div class="container text-center animate-on-scroll">
-            <h2 class="section-title">The Registry</h2>
-            <div class="gold-divider"></div>
-            <p class="section-text mb-4">
-                Your presence is the greatest gift, and we’re truly grateful to celebrate with you.<br><br>
-                If you would like to give, contributions to our Baby Fund are warmly appreciated.
-            </p>
-            <button id="openRegistryModal" class="btn registry-btn">CONTRIBUTE TO THE BABY FUND</button>
-        </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section id="rsvp" class="section bg-light">
-        <div class="container text-center animate-on-scroll">
-            <h2 class="section-title">RSVP</h2>
-            <div class="gold-divider"></div>
-            <p class="section-text mb-4">Please let us know if you'll be able to join us on our special day.</p>
-
-            <form class="rsvp-form animate-on-scroll" style="transition-delay: 0.2s;" id="rsvpForm">
-                <input type="hidden" name="access_key" value="fa786807-996b-4f3e-9791-e4c6b809796e">
-                <input type="hidden" name="subject" value="New Wedding RSVP Submission">
-                <input type="hidden" name="replyto" value="@">
-                <!-- Helps if we have an explicit email field mapped, Web3Forms automatically usually detects it -->
-
-                <input type="text" name="Full Name" placeholder="Full Name(s)" required>
-                <input type="email" name="Email" placeholder="Email Address" required>
-
-                <select name="Attending" required>
-                    <option value="" disabled selected>Will you be attending?</option>
-                    <option value="Yes - Joyfully Accept">Joyfully Accept</option>
-                    <option value="No - Regretfully Decline">Regretfully Decline</option>
-                </select>
-
-                <select name="Number of Guests" required>
-                    <option value="" disabled selected>Number of Guests</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4+">4+</option>
-                </select>
-
-                <textarea name="Notes or Dietary Restrictions" placeholder="Any dietary restrictions or special notes?"
-                    rows="4"></textarea>
-
-                <button type="submit" class="btn">Send RSVP</button>
-                <p id="rsvpMessage" style="display:none; margin-top:15px; font-weight:500;"></p>
-            </form>
-        </div>
-    </section>
-
     <footer class="footer animate-on-scroll">
         <p>We can't wait to celebrate with you!</p>
         <p class="names-small">Jervis & Hazel</p>
-        <p class="date">09 . 18 . 2027</p>
+        <p class="date">May. 9, 2026</p>
     </footer>
-
-    <!-- Registry Modal -->
-    <div id="registryModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3 class="modal-title">Baby Fund Contribution</h3>
-            <p class="modal-text">Thank you so much for your generosity. If you wish to contribute to our baby fund, you
-                may use the details below:</p>
-
-            <div class="bank-details">
-                <p><strong>Bank Name:</strong> Chase Bank</p>
-                <p><strong>Account Name:</strong> Jervis & Hazel Trust</p>
-                <p><strong>Account Number:</strong> 1234 5678 9012</p>
-                <p><strong>Routing Number:</strong> 098765432</p>
-            </div>
-
-            <p class="modal-note">We are truly grateful for your love and support as our family grows.</p>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
