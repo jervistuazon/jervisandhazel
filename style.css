@@ -535,7 +535,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 560px;
+    min-height: 760px;
     margin: 42px auto 0;
 }
 
@@ -578,18 +578,22 @@ img {
 .scatter-photo {
     position: absolute;
     z-index: 5;
-    width: 250px;
-    padding: 14px 14px 34px;
+    top: var(--photo-top, auto);
+    right: var(--photo-right, auto);
+    bottom: var(--photo-bottom, auto);
+    left: var(--photo-left, auto);
+    width: var(--photo-width, 18%);
+    padding: 12px 12px 28px;
     background: var(--white);
     border: 1px solid rgba(31, 55, 80, 0.1);
     box-shadow: 0 14px 34px rgba(31, 55, 80, 0.14);
     cursor: pointer;
-    opacity: 0.46;
+    opacity: 0.42;
     outline: none;
     pointer-events: auto;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) rotate(var(--photo-rotation));
+    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(var(--photo-scale, 1)) rotate(var(--photo-rotation));
     transition: transform 0.45s ease, box-shadow 0.45s ease, opacity 0.35s ease, filter 0.35s ease;
     filter: saturate(0.92);
 }
@@ -599,88 +603,246 @@ img {
     z-index: 50 !important;
     opacity: 1 !important;
     filter: saturate(1.02);
-    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(1.16) rotate(calc(var(--photo-rotation) * 0.18)) !important;
+    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.16)) rotate(calc(var(--photo-rotation) * 0.18)) !important;
     box-shadow: 0 26px 55px rgba(20, 29, 39, 0.24);
 }
 
 .photo-1 {
-    top: -20px;
-    left: -80px;
-    --photo-rotation: -12deg;
+    --photo-top: 4%;
+    --photo-left: 2%;
+    --photo-width: 16.5%;
+    --photo-rotation: -10deg;
 }
 
 .photo-2 {
-    bottom: -30px;
-    left: 10px;
-    --photo-rotation: 8deg;
+    --photo-top: 76%;
+    --photo-left: 52%;
+    --photo-width: 17.2%;
+    --photo-rotation: 7deg;
 }
 
 .photo-3 {
-    top: 30px;
-    right: -60px;
-    --photo-rotation: 15deg;
+    --photo-top: 6%;
+    --photo-left: 82%;
+    --photo-width: 16.7%;
+    --photo-rotation: 13deg;
 }
 
 .photo-4 {
-    bottom: 20px;
-    right: 10px;
+    --photo-top: 49%;
+    --photo-left: 85%;
+    --photo-width: 15.6%;
     --photo-rotation: -6deg;
 }
 
 .photo-5 {
-    top: -80px;
-    right: 25%;
-    width: 230px;
-    --photo-rotation: 90deg;
+    --photo-top: -2%;
+    --photo-left: 58%;
+    --photo-width: 17.8%;
+    --photo-rotation: 6deg;
 }
 
 .photo-6 {
-    top: 120px;
-    left: -100px;
-    width: 220px;
+    --photo-top: 27%;
+    --photo-left: 0%;
+    --photo-width: 15.4%;
     --photo-rotation: 5deg;
 }
 
 .photo-7 {
-    right: -40px;
-    bottom: -60px;
-    width: 240px;
-    --photo-rotation: 12deg;
+    --photo-top: 76%;
+    --photo-left: 82%;
+    --photo-width: 16.9%;
+    --photo-rotation: 10deg;
 }
 
 .photo-8 {
-    bottom: 100px;
-    left: -50px;
-    width: 210px;
+    --photo-top: 49%;
+    --photo-left: 8%;
+    --photo-width: 15.6%;
     --photo-rotation: -8deg;
 }
 
 .photo-9 {
-    top: 250px;
-    left: -60px;
-    width: 220px;
+    --photo-top: 76%;
+    --photo-left: 3%;
+    --photo-width: 16.7%;
     --photo-rotation: 4deg;
 }
 
 .photo-10 {
-    top: -100px;
-    left: 20%;
-    width: 230px;
-    --photo-rotation: -5deg;
+    --photo-top: -3%;
+    --photo-left: 24%;
+    --photo-width: 17.8%;
+    --photo-rotation: -6deg;
 }
 
 .photo-11 {
-    bottom: -100px;
-    left: 25%;
-    width: 250px;
-    --photo-rotation: 6deg;
+    --photo-top: 78%;
+    --photo-left: 30%;
+    --photo-width: 17.8%;
+    --photo-rotation: 5deg;
 }
 
 .photo-12 {
-    top: 220px;
-    right: -60px;
-    width: 210px;
+    --photo-top: 27%;
+    --photo-left: 85%;
+    --photo-width: 15.4%;
     --photo-rotation: -10deg;
+}
+
+body.story-layout-editor-mode .story-content-wrapper {
+    outline: 1px dashed rgba(31, 55, 80, 0.22);
+    outline-offset: 10px;
+}
+
+body.story-layout-editor-mode .scatter-photo {
+    cursor: grab;
+    touch-action: none;
+}
+
+body.story-layout-editor-mode .scatter-photo.is-dragging {
+    cursor: grabbing;
+}
+
+body.story-layout-editor-mode .scatter-photo.is-selected {
+    opacity: 0.92;
+    box-shadow: 0 0 0 3px rgba(201, 164, 106, 0.4), 0 22px 48px rgba(20, 29, 39, 0.2);
+}
+
+body.story-layout-editor-mode .scatter-photo:hover,
+body.story-layout-editor-mode .scatter-photo.mobile-active {
+    opacity: 0.92 !important;
+    filter: saturate(0.98);
+    transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(var(--photo-scale, 1)) rotate(var(--photo-rotation)) !important;
+    box-shadow: 0 14px 34px rgba(31, 55, 80, 0.14);
+}
+
+.story-layout-editor {
+    position: fixed;
+    top: 92px;
+    right: 20px;
+    z-index: 2100;
+    display: none;
+    width: min(320px, calc(100vw - 32px));
+    max-height: calc(100vh - 120px);
+    padding: 18px;
+    border: 1px solid rgba(31, 55, 80, 0.1);
+    border-radius: 24px;
+    background: rgba(255, 252, 248, 0.94);
+    box-shadow: 0 24px 54px rgba(16, 26, 35, 0.16);
+    backdrop-filter: blur(18px);
+    overflow: auto;
+}
+
+body.story-layout-editor-mode .story-layout-editor {
+    display: block;
+}
+
+.story-layout-editor h3 {
+    margin-bottom: 8px;
+    color: var(--navy);
+    font-size: 1.55rem;
+}
+
+.story-layout-editor p,
+.story-layout-editor label,
+.story-layout-editor button,
+.story-layout-editor input,
+.story-layout-editor select,
+.story-layout-editor textarea {
+    font-family: var(--font-body);
+}
+
+.story-layout-editor-badge {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.story-layout-editor-copy {
+    margin-bottom: 16px;
+    font-size: 0.92rem;
+    color: var(--text-light);
+}
+
+.story-layout-editor-field {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--navy);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.story-layout-editor-field input,
+.story-layout-editor-field select,
+.story-layout-editor textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: 1px solid rgba(31, 55, 80, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--text-dark);
+    font-size: 0.94rem;
+}
+
+.story-layout-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.story-layout-editor-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0 12px;
+}
+
+.story-layout-editor button {
+    padding: 11px 14px;
+    border: none;
+    border-radius: 999px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.story-layout-editor button[data-action="reset"] {
+    background: rgba(31, 55, 80, 0.12);
+    color: var(--navy);
+}
+
+.story-layout-editor button[data-action="export"] {
+    background: var(--gold);
+    color: #172838;
+}
+
+.story-layout-editor button[data-action="clear-export"] {
+    background: rgba(31, 55, 80, 0.08);
+    color: var(--navy);
+}
+
+.story-layout-editor textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.story-layout-editor-status {
+    margin-top: 10px;
+    font-size: 0.86rem;
+    color: var(--text-light);
 }
 
 .gallery-section {
@@ -1123,7 +1285,7 @@ img {
     }
 
     .scatter-photo {
-        width: 120px !important;
+        width: var(--photo-width, 120px) !important;
         padding: 5px 5px 18px !important;
         opacity: 0.28;
         pointer-events: auto;
@@ -1131,89 +1293,112 @@ img {
 
     .scatter-photo:hover,
     .scatter-photo.mobile-active {
-        transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(1.12) rotate(calc(var(--photo-rotation) * 0.25)) !important;
+        transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.12)) rotate(calc(var(--photo-rotation) * 0.25)) !important;
     }
 
     .photo-1 {
-        top: -20px;
-        left: -10px;
+        --photo-top: -20px;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: -10px;
+        --photo-width: 120px;
     }
 
     .photo-2 {
-        top: -10px;
-        right: -10px;
-        left: auto;
-        bottom: auto;
+        --photo-top: -10px;
+        --photo-right: -10px;
+        --photo-bottom: auto;
+        --photo-left: auto;
+        --photo-width: 120px;
     }
 
     .photo-3 {
-        top: 80px;
-        left: -20px;
-        right: auto;
-        bottom: auto;
+        --photo-top: 80px;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: -20px;
+        --photo-width: 120px;
     }
 
     .photo-4 {
-        top: 100px;
-        right: -20px;
-        left: auto;
-        bottom: auto;
+        --photo-top: 100px;
+        --photo-right: -20px;
+        --photo-bottom: auto;
+        --photo-left: auto;
+        --photo-width: 120px;
     }
 
     .photo-5 {
-        top: 180px;
-        left: -15px;
-        right: auto;
-        bottom: auto;
+        --photo-top: 180px;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: -15px;
+        --photo-width: 120px;
     }
 
     .photo-6 {
-        top: 200px;
-        right: -15px;
-        left: auto;
-        bottom: auto;
+        --photo-top: 200px;
+        --photo-right: -15px;
+        --photo-bottom: auto;
+        --photo-left: auto;
+        --photo-width: 120px;
     }
 
     .photo-7 {
-        top: 280px;
-        left: -10px;
-        right: auto;
-        bottom: auto;
+        --photo-top: 280px;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: -10px;
+        --photo-width: 120px;
     }
 
     .photo-8 {
-        top: 300px;
-        right: -10px;
-        left: auto;
-        bottom: auto;
+        --photo-top: 300px;
+        --photo-right: -10px;
+        --photo-bottom: auto;
+        --photo-left: auto;
+        --photo-width: 120px;
     }
 
     .photo-9 {
-        top: auto;
-        left: -20px;
-        right: auto;
-        bottom: 100px;
+        --photo-top: auto;
+        --photo-right: auto;
+        --photo-bottom: 100px;
+        --photo-left: -20px;
+        --photo-width: 120px;
     }
 
     .photo-10 {
-        top: auto;
-        right: -20px;
-        left: auto;
-        bottom: 80px;
+        --photo-top: auto;
+        --photo-right: -20px;
+        --photo-bottom: 80px;
+        --photo-left: auto;
+        --photo-width: 120px;
     }
 
     .photo-11 {
-        top: auto;
-        left: 0;
-        right: auto;
-        bottom: -20px;
+        --photo-top: auto;
+        --photo-right: auto;
+        --photo-bottom: -20px;
+        --photo-left: 0;
+        --photo-width: 120px;
     }
 
     .photo-12 {
+        --photo-top: auto;
+        --photo-right: 0;
+        --photo-bottom: -10px;
+        --photo-left: auto;
+        --photo-width: 120px;
+    }
+
+    .story-layout-editor {
         top: auto;
-        right: 0;
-        left: auto;
-        bottom: -10px;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        width: auto;
+        max-height: 44vh;
     }
 
     .gallery-grid,
