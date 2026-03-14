@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links li a');
+    const navbar = document.getElementById('navbar');
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const scatterPhotos = document.querySelectorAll('.scatter-photo');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
@@ -10,8 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
-        navItems.forEach(item => {
+        navItems.forEach((item) => {
             item.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
@@ -19,121 +21,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Handle RSVP form submission with Web3Forms
-    const rsvpForm = document.getElementById('rsvpForm');
-    const rsvpMessage = document.getElementById('rsvpMessage');
-
-    if (rsvpForm && rsvpMessage) {
-        rsvpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(rsvpForm);
-            const submitBtn = rsvpForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn ? submitBtn.innerText : 'Send RSVP';
-
-            if (submitBtn) {
-                submitBtn.innerText = 'Sending...';
-                submitBtn.disabled = true;
-            }
-
-            try {
-                const response = await fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const data = await response.json();
-
-                if (data.success) {
-                    rsvpMessage.innerText = 'Thank you! Your RSVP has been received.';
-                    rsvpMessage.style.display = 'block';
-                    rsvpMessage.style.color = 'var(--navy)';
-                    rsvpForm.reset();
-                } else {
-                    rsvpMessage.innerText = 'Something went wrong. Please try again.';
-                    rsvpMessage.style.display = 'block';
-                    rsvpMessage.style.color = 'red';
-                }
-            } catch (error) {
-                rsvpMessage.innerText = 'Error sending message. Please try again.';
-                rsvpMessage.style.display = 'block';
-                rsvpMessage.style.color = 'red';
-            } finally {
-                if (submitBtn) {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                }
-
-                setTimeout(() => {
-                    rsvpMessage.style.display = 'none';
-                }, 5000);
-            }
-        });
-    }
-
-    // Add scroll effect for navbar
-    const navbar = document.getElementById('navbar');
-
     if (navbar && !navbar.hasAttribute('data-static-scrolled')) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+        const updateNavbar = () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 40);
+        };
 
-                // Mobile adjustments
-                if (window.innerWidth <= 768) {
-                    navbar.style.padding = '15px 20px';
-                } else {
-                    navbar.style.padding = ''; // Reset to default
-                }
-            }
-        });
-
-        // Initial call for mobile styling
-        if (window.innerWidth <= 768) {
-            navbar.style.padding = '15px 20px';
-        }
+        updateNavbar();
+        window.addEventListener('scroll', updateNavbar, { passive: true });
     }
-
-    // Scroll animations
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
     if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.14,
+            rootMargin: '0px 0px -40px 0px'
         });
 
-        animatedElements.forEach((el) => {
-            observer.observe(el);
+        animatedElements.forEach((element) => {
+            revealObserver.observe(element);
+        });
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const id = entry.target.getAttribute('id');
+                if (!id || !entry.isIntersecting) {
+                    return;
+                }
+
+                navItems.forEach((link) => {
+                    const matches = link.getAttribute('href') === `#${id}`;
+                    link.classList.toggle('is-active', matches);
+                });
+            });
+        }, {
+            threshold: 0.45,
+            rootMargin: '-20% 0px -30% 0px'
+        });
+
+        document.querySelectorAll('section[id]').forEach((section) => {
+            sectionObserver.observe(section);
         });
     } else {
-        animatedElements.forEach((el) => {
-            el.classList.add('is-visible');
+        animatedElements.forEach((element) => {
+            element.classList.add('is-visible');
         });
     }
 
-    // Handle mobile touch events for scatter photos
-    const scatterPhotos = document.querySelectorAll('.scatter-photo');
-
     if (scatterPhotos.length > 0) {
-        scatterPhotos.forEach(photo => {
-            // When touched, make it fully pop over the text
+        scatterPhotos.forEach((photo) => {
             photo.addEventListener('touchstart', function () {
-                // Remove active class from all other photos first
-                scatterPhotos.forEach(p => p.classList.remove('mobile-active'));
-                // Add to the one being touched
+                scatterPhotos.forEach((item) => item.classList.remove('mobile-active'));
                 this.classList.add('mobile-active');
             }, { passive: true });
 
-            // Revert back when touch is released
             photo.addEventListener('touchend', function () {
                 this.classList.remove('mobile-active');
             }, { passive: true });
@@ -143,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { passive: true });
         });
 
-        // Tap anywhere else on the document to dismiss the photo popup
-        document.addEventListener('touchstart', function (e) {
-            if (!e.target.classList.contains('scatter-photo')) {
-                scatterPhotos.forEach(p => p.classList.remove('mobile-active'));
+        document.addEventListener('touchstart', (event) => {
+            if (!event.target.classList.contains('scatter-photo')) {
+                scatterPhotos.forEach((photo) => photo.classList.remove('mobile-active'));
             }
         }, { passive: true });
     }
+
 });

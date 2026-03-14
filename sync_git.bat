@@ -1,15 +1,13 @@
 @echo off
-setlocal EnableExtensions
+setlocal EnableExtensions EnableDelayedExpansion
 color 0B
 
 set "REMOTE_NAME=origin"
 set "REMOTE_URL=https://github.com/jervistuazon/jervisandhazel.git"
 set "TARGET_BRANCH=main"
-set "STATUS_FILE=%TEMP%\sync_git_status.txt"
-set "STASH_NAME=sync_git_auto_stash"
 
 echo ============================================
-echo      Starting GitHub Synchronization
+echo        Sync Local Repo to GitHub
 echo ============================================
 echo.
 
@@ -69,98 +67,55 @@ if /I not "%CURRENT_BRANCH%"=="%TARGET_BRANCH%" (
     goto :end
 )
 
-echo [INFO] Fetching latest changes from %REMOTE_NAME%/%TARGET_BRANCH%...
-git fetch %REMOTE_NAME% %TARGET_BRANCH%
+echo [INFO] Staging local changes...
+git add -A
 if errorlevel 1 (
-    echo [ERROR] Failed to fetch the latest changes from GitHub.
+    echo [ERROR] Failed to stage local changes.
     goto :end
 )
 
-set "STASH_CREATED="
-git status --porcelain > "%STATUS_FILE%"
-for %%A in ("%STATUS_FILE%") do set "STATUS_SIZE=%%~zA"
-
-if not "%STATUS_SIZE%"=="0" (
-    echo [INFO] Saving local changes temporarily...
-    git stash push --include-untracked -m "%STASH_NAME%"
-    if errorlevel 1 (
-        echo [ERROR] Failed to temporarily stash local changes.
-        del "%STATUS_FILE%" >nul 2>nul
-        goto :end
-    )
-    set "STASH_CREATED=1"
-)
-
-git ls-remote --exit-code --heads %REMOTE_NAME% %TARGET_BRANCH% >nul 2>nul
-if not errorlevel 1 (
-    echo [INFO] Rebasing local "%TARGET_BRANCH%" on top of %REMOTE_NAME%/%TARGET_BRANCH%...
-    git rebase %REMOTE_NAME%/%TARGET_BRANCH%
-    if errorlevel 1 (
-        echo [ERROR] Rebase failed.
-        if defined STASH_CREATED echo Your local changes are still saved in the stash list.
-        del "%STATUS_FILE%" >nul 2>nul
-        echo Resolve the rebase, then run the script again.
-        goto :end
-    )
-)
-
-if defined STASH_CREATED (
-    echo [INFO] Restoring local changes...
-    git stash pop
-    if errorlevel 1 (
-        echo [ERROR] Restoring the stashed changes caused conflicts.
-        echo Resolve the conflicts, then run the script again.
-        del "%STATUS_FILE%" >nul 2>nul
-        goto :end
-    )
-)
-
-git status --porcelain > "%STATUS_FILE%"
-for %%A in ("%STATUS_FILE%") do set "STATUS_SIZE=%%~zA"
-
-if "%STATUS_SIZE%"=="0" (
-    echo [INFO] No local changes to commit.
-) else (
+git diff --cached --quiet
+if errorlevel 1 (
     for /f "usebackq delims=" %%i in (`powershell -NoProfile -Command "Get-Date -Format 'yyyy-MM-dd HH:mm:ss'"`) do set "COMMIT_TIME=%%i"
-    set "COMMIT_MSG=Auto-sync: %COMMIT_TIME%"
+    set "COMMIT_MSG=Sync local updates: !COMMIT_TIME!"
 
-    echo [INFO] Staging local changes...
-    git add -A
+    echo [INFO] Creating commit "!COMMIT_MSG!"...
+    git commit -m "!COMMIT_MSG!"
     if errorlevel 1 (
-        echo [ERROR] Failed to stage local changes.
-        del "%STATUS_FILE%" >nul 2>nul
+        echo [ERROR] Failed to create the commit.
         goto :end
     )
-
-    git diff --cached --quiet
-    if errorlevel 1 (
-        echo [INFO] Creating commit "%COMMIT_MSG%"...
-        git commit -m "%COMMIT_MSG%"
-        if errorlevel 1 (
-            echo [ERROR] Failed to create the commit.
-            del "%STATUS_FILE%" >nul 2>nul
-            goto :end
-        )
-    ) else (
-        echo [INFO] Nothing new to commit after staging.
-    )
+) else (
+    echo [INFO] No new file changes to commit.
 )
 
-del "%STATUS_FILE%" >nul 2>nul
-
-echo [INFO] Pushing "%TARGET_BRANCH%" to GitHub...
+echo [INFO] Pushing local "%TARGET_BRANCH%" to GitHub...
 git push -u %REMOTE_NAME% %TARGET_BRANCH%
 if errorlevel 1 (
-    echo [ERROR] Push failed.
-    echo Run "git status" to inspect the current repository state.
-    goto :end
+    echo.
+    echo [WARN] Standard push failed.
+    echo [WARN] This usually means GitHub has commits that your local branch does not.
+    echo [WARN] If your desktop copy is the latest version, you can overwrite GitHub safely with force-with-lease.
+    choice /C YN /N /M "Overwrite GitHub with local %TARGET_BRANCH%? [Y/N]: "
+    if errorlevel 2 goto :push_failed
+
+    echo [INFO] Force pushing local "%TARGET_BRANCH%" with lease protection...
+    git push --force-with-lease -u %REMOTE_NAME% %TARGET_BRANCH%
+    if errorlevel 1 (
+        echo [ERROR] Force push failed.
+        echo Run "git status" and "git log --oneline --decorate --graph -10" to inspect the repository state.
+        goto :end
+    )
 )
 
 echo.
 echo ============================================
-echo     Synchronization Completed Successfully
+echo      GitHub Now Matches Your Local Repo
 echo ============================================
+goto :end
 
+:push_failed
+echo [INFO] Push cancelled. GitHub was not changed.
 goto :end
 
 :check_in_progress

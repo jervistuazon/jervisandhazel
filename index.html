@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.web3forms.com; frame-src https://www.google.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-src https://www.google.com; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Jervis & Hazel - Wedding Invitation</title>
+    <title>Jervis & Hazel - Wedding Information</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,10 +22,10 @@
     <nav id="navbar">
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#story">Our Story</a></li>
-            <li><a href="#details">Details</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#details">Information</a></li>
             <li><a href="#location">Location</a></li>
-            <li><a href="rsvp.html">RSVP</a></li>
         </ul>
         <div class="hamburger">
             <span class="bar"></span>
@@ -36,10 +36,18 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-orb hero-orb-left" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb-right" aria-hidden="true"></div>
         <div class="hero-content animate-on-scroll">
-            <div class="floral-frame">
-                <h1 class="names">Jervis <span class="ampersand">&amp;</span> Hazel</h1>
-                <p class="date">Saturday, May 9, 2026</p>
+            <div class="floral-frame" data-parallax data-parallax-strength="18">
+                <div class="hero-prelude">
+                    <p class="eyebrow">We&rsquo;re getting married</p>
+                    <p class="hero-intro">A quiet and joyful announcement</p>
+                </div>
+                <div class="hero-main">
+                    <h1 class="names">Jervis <span class="ampersand">&amp;</span> Hazel</h1>
+                    <p class="date">Saturday, May 9, 2026</p>
+                </div>
             </div>
         </div>
 
@@ -50,61 +58,114 @@
         </a>
     </section>
 
-    <!-- Our Story Section -->
+    <!-- Story Section -->
     <section id="story" class="section story-section">
+        <div class="section-wash" aria-hidden="true"></div>
         <div class="container text-center animate-on-scroll">
             <div class="story-content-wrapper">
                 <!-- Background Scattered Photos -->
                 <div class="scattered-photos">
-                    <img src="photos/photo-1.webp" alt="Jervis and Hazel" class="scatter-photo photo-1">
-                    <img src="photos/photo-2.webp" alt="Jervis and Hazel" class="scatter-photo photo-2">
-                    <img src="photos/photo-3.webp" alt="Jervis and Hazel" class="scatter-photo photo-3">
-                    <img src="photos/photo-4.webp" alt="Jervis and Hazel" class="scatter-photo photo-4">
-                    <img src="photos/photo-5.webp" alt="Jervis and Hazel" class="scatter-photo photo-5">
-                    <img src="photos/photo-6.webp" alt="Jervis and Hazel" class="scatter-photo photo-6">
-                    <img src="photos/photo-7.webp" alt="Jervis and Hazel" class="scatter-photo photo-7">
-                    <img src="photos/photo-8.webp" alt="Jervis and Hazel" class="scatter-photo photo-8">
-                    <img src="photos/photo-9.webp" alt="Jervis and Hazel" class="scatter-photo photo-9">
-                    <img src="photos/photo-10.webp" alt="Jervis and Hazel" class="scatter-photo photo-10">
-                    <img src="photos/photo-11.webp" alt="Jervis and Hazel" class="scatter-photo photo-11">
-                    <img src="photos/photo-12.webp" alt="Jervis and Hazel" class="scatter-photo photo-12">
+                    <img src="photos/photo-1.webp" alt="Jervis and Hazel" class="scatter-photo photo-1" data-parallax data-parallax-strength="10">
+                    <img src="photos/photo-2.webp" alt="Jervis and Hazel" class="scatter-photo photo-2" data-parallax data-parallax-strength="14">
+                    <img src="photos/photo-3.webp" alt="Jervis and Hazel" class="scatter-photo photo-3" data-parallax data-parallax-strength="8">
+                    <img src="photos/photo-4.webp" alt="Jervis and Hazel" class="scatter-photo photo-4" data-parallax data-parallax-strength="12">
+                    <img src="photos/photo-5.webp" alt="Jervis and Hazel" class="scatter-photo photo-5" data-parallax data-parallax-strength="7">
+                    <img src="photos/photo-6.webp" alt="Jervis and Hazel" class="scatter-photo photo-6" data-parallax data-parallax-strength="9">
+                    <img src="photos/photo-7.webp" alt="Jervis and Hazel" class="scatter-photo photo-7" data-parallax data-parallax-strength="13">
+                    <img src="photos/photo-8.webp" alt="Jervis and Hazel" class="scatter-photo photo-8" data-parallax data-parallax-strength="11">
+                    <img src="photos/photo-9.webp" alt="Jervis and Hazel" class="scatter-photo photo-9" data-parallax data-parallax-strength="6">
+                    <img src="photos/photo-10.webp" alt="Jervis and Hazel" class="scatter-photo photo-10" data-parallax data-parallax-strength="15">
+                    <img src="photos/photo-11.webp" alt="Jervis and Hazel" class="scatter-photo photo-11" data-parallax data-parallax-strength="10">
+                    <img src="photos/photo-12.webp" alt="Jervis and Hazel" class="scatter-photo photo-12" data-parallax data-parallax-strength="8">
                 </div>
 
                 <!-- Foreground Text Box -->
                 <div class="story-text-box">
-                    <h2 class="section-title">Our Story</h2>
+                    <h2 class="section-title">A Note from Us</h2>
                     <div class="gold-divider"></div>
                     <p class="section-text">
-                        Every love story is beautiful, but ours is our favorite. It all started with a simple hello,
-                        and blossomed into a lifetime of love. We can't wait to celebrate the beginning of our
-                        next chapter with the people who mean the world to us.
+                        With grateful hearts, we&rsquo;re happy to share that we&rsquo;re getting married. This season
+                        of our lives means so much to us, and we wanted to share the joy of it with the people who
+                        have been part of our story.
+                    </p>
+                    <p class="section-text story-reflection">
+                        We&rsquo;re looking forward to a beautiful and intimate celebration, surrounded by love,
+                        family, and the quiet happiness of beginning this new chapter together.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Details Section -->
-    <section id="details" class="section bg-light">
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="section-wash section-wash-soft" aria-hidden="true"></div>
         <div class="container text-center animate-on-scroll">
-            <h2 class="section-title">The Details</h2>
+            <h2 class="section-title">Gallery</h2>
             <div class="gold-divider"></div>
+            <p class="section-text gallery-intro">
+                A few moments from our story as we step into this new chapter together.
+            </p>
+            <div class="gallery-grid">
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.1s;">
+                    <img src="photos/photo-1.webp" alt="Jervis and Hazel together">
+                </figure>
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <img src="photos/photo-3.webp" alt="Jervis and Hazel smiling together">
+                </figure>
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.3s;">
+                    <img src="photos/photo-5.webp" alt="Portrait of Jervis and Hazel">
+                </figure>
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <img src="photos/photo-7.webp" alt="Jervis and Hazel sharing a moment">
+                </figure>
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.5s;">
+                    <img src="photos/photo-9.webp" alt="Jervis and Hazel outdoors">
+                </figure>
+                <figure class="gallery-card animate-on-scroll" style="transition-delay: 0.6s;">
+                    <img src="photos/photo-11.webp" alt="Jervis and Hazel posing together">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Details Section -->
+    <section id="details" class="section bg-light">
+        <div class="section-wash section-wash-cream" aria-hidden="true"></div>
+        <div class="container text-center animate-on-scroll">
+            <h2 class="section-title">Wedding Information</h2>
+            <div class="gold-divider"></div>
+            <p class="section-text details-intro">
+                Shared here for reference, so the people in our lives know when and where this day will happen.
+            </p>
 
             <div class="details-grid">
                 <div class="detail-card animate-on-scroll" style="transition-delay: 0.2s;">
-                    <h3>Date &amp; Time</h3>
-                    <p class="time">4:00 PM</p>
+                    <h3>Date</h3>
                     <p>Saturday, May 9, 2026</p>
                 </div>
 
                 <div class="detail-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <h3>Time</h3>
+                    <p>4:00 PM</p>
+                </div>
+
+                <div class="detail-card animate-on-scroll" style="transition-delay: 0.6s;">
                     <h3>Venue</h3>
-                    <p class="time">Asuncion's Private Dining</p>
-                    <p>Outdoor Garden<br>6th St. Maligaya Village<br>San Fernando, Pampanga</p>
+                    <p>Asuncion&rsquo;s Private Dining</p>
+                    <p>Outdoor Garden</p>
+                </div>
+
+                <div class="detail-card animate-on-scroll" style="transition-delay: 0.8s;">
+                    <h3>Location</h3>
+                    <p>6th St. Maligaya Village<br>San Fernando, Pampanga</p>
+                </div>
+
+                <div class="detail-card animate-on-scroll" style="transition-delay: 1s;">
+                    <h3>Celebration</h3>
+                    <p>Private family gathering</p>
                 </div>
             </div>
-
-            <p class="dress-code animate-on-scroll" style="transition-delay: 0.6s;">Dress Code: Semi-Formal</p>
         </div>
     </section>
 
@@ -113,24 +174,27 @@
         <div class="container text-center animate-on-scroll">
             <h2 class="section-title">Location</h2>
             <div class="gold-divider"></div>
-            <p class="section-text mb-4">Asuncion's Private Dining - Outdoor Garden<br>6th St. Maligaya Village, San Fernando, Pampanga</p>
 
-            <!-- Mockup Map placeholder -->
-            <div class="map-container animate-on-scroll" style="transition-delay: 0.2s;">
-                <iframe
-                    src="https://www.google.com/maps?q=Asuncion%27s+Private+Dining+Outdoor+Garden,+6th+St.+Maligaya+Village,+San+Fernando,+Pampanga&output=embed"
-                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="hotels mt-4 animate-on-scroll" style="transition-delay: 0.4s;">
-                <h3>Venue</h3>
-                <p><strong>Asuncion's Private Dining</strong></p>
-                <p>Outdoor Garden</p>
-                <p>6th St. Maligaya Village, San Fernando, Pampanga</p>
+            <div class="location-layout">
+                <div class="map-container animate-on-scroll" style="transition-delay: 0.2s;">
+                    <iframe
+                        src="https://www.google.com/maps?q=Asuncion%27s+Private+Dining+Outdoor+Garden,+6th+St.+Maligaya+Village,+San+Fernando,+Pampanga&output=embed"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="location-note animate-on-scroll" style="transition-delay: 0.4s;">
+                    <p class="location-kicker">Venue</p>
+                    <h3>Asuncion&rsquo;s Private Dining</h3>
+                    <p>Outdoor Garden</p>
+                    <p>6th St. Maligaya Village, San Fernando, Pampanga</p>
+                    <p class="location-note-quiet">
+                        A calm outdoor setting for a simple and intimate family gathering.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
     <footer class="footer animate-on-scroll">
-        <p>We can't wait to celebrate with you!</p>
+        <p>Thank you for your love, kindness, and warm wishes as we begin this new chapter together.</p>
         <p class="names-small">Jervis & Hazel</p>
         <p class="date">Saturday, May 9, 2026</p>
     </footer>
