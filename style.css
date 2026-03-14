@@ -608,87 +608,99 @@ img {
 }
 
 .photo-1 {
-    --photo-top: 4%;
-    --photo-left: 2%;
-    --photo-width: 16.5%;
+    --photo-top: 4.61%;
+    --photo-left: 13.09%;
+    --photo-width: 16.55%;
     --photo-rotation: -10deg;
+    --photo-scale: 1.65;
 }
 
 .photo-2 {
-    --photo-top: 76%;
-    --photo-left: 52%;
-    --photo-width: 17.2%;
+    --photo-top: 71.32%;
+    --photo-left: 60.55%;
+    --photo-width: 17.18%;
     --photo-rotation: 7deg;
+    --photo-scale: 1;
 }
 
 .photo-3 {
-    --photo-top: 6%;
-    --photo-left: 82%;
-    --photo-width: 16.7%;
+    --photo-top: 4.87%;
+    --photo-left: 73.18%;
+    --photo-width: 16.73%;
     --photo-rotation: 13deg;
+    --photo-scale: 1.4;
 }
 
 .photo-4 {
-    --photo-top: 49%;
-    --photo-left: 85%;
-    --photo-width: 15.6%;
+    --photo-top: 49.21%;
+    --photo-left: 77.45%;
+    --photo-width: 15.64%;
     --photo-rotation: -6deg;
+    --photo-scale: 1.2;
 }
 
 .photo-5 {
-    --photo-top: -2%;
-    --photo-left: 58%;
-    --photo-width: 17.8%;
+    --photo-top: -5%;
+    --photo-left: 53.73%;
+    --photo-width: 17.82%;
     --photo-rotation: 6deg;
+    --photo-scale: 1.2;
 }
 
 .photo-6 {
-    --photo-top: 27%;
-    --photo-left: 0%;
-    --photo-width: 15.4%;
+    --photo-top: 22.89%;
+    --photo-left: 5.09%;
+    --photo-width: 15.36%;
     --photo-rotation: 5deg;
+    --photo-scale: 1.65;
 }
 
 .photo-7 {
-    --photo-top: 76%;
-    --photo-left: 82%;
-    --photo-width: 16.9%;
+    --photo-top: 75.79%;
+    --photo-left: 10.36%;
+    --photo-width: 16.91%;
     --photo-rotation: 10deg;
+    --photo-scale: 1.7;
 }
 
 .photo-8 {
-    --photo-top: 49%;
-    --photo-left: 8%;
-    --photo-width: 15.6%;
+    --photo-top: 54.34%;
+    --photo-left: 4.64%;
+    --photo-width: 15.64%;
     --photo-rotation: -8deg;
+    --photo-scale: 1.8;
 }
 
 .photo-9 {
-    --photo-top: 76%;
-    --photo-left: 3%;
-    --photo-width: 16.7%;
+    --photo-top: 72.5%;
+    --photo-left: 25.55%;
+    --photo-width: 16.73%;
     --photo-rotation: 4deg;
+    --photo-scale: 1;
 }
 
 .photo-10 {
-    --photo-top: -3%;
-    --photo-left: 24%;
-    --photo-width: 17.8%;
+    --photo-top: -3.68%;
+    --photo-left: 32.18%;
+    --photo-width: 17.82%;
     --photo-rotation: -6deg;
+    --photo-scale: 1.2;
 }
 
 .photo-11 {
-    --photo-top: 78%;
-    --photo-left: 30%;
-    --photo-width: 17.8%;
+    --photo-top: 70.53%;
+    --photo-left: 43.36%;
+    --photo-width: 17.82%;
     --photo-rotation: 5deg;
+    --photo-scale: 1;
 }
 
 .photo-12 {
-    --photo-top: 27%;
-    --photo-left: 85%;
-    --photo-width: 15.4%;
+    --photo-top: 26.58%;
+    --photo-left: 78%;
+    --photo-width: 15.36%;
     --photo-rotation: -10deg;
+    --photo-scale: 1.25;
 }
 
 body.story-layout-editor-mode .story-content-wrapper {
@@ -1297,99 +1309,111 @@ body.story-layout-editor-mode .story-layout-editor {
     }
 
     .photo-1 {
-        --photo-top: -20px;
+        --photo-top: 28.03%;
         --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: -10px;
-        --photo-width: 120px;
+        --photo-left: -4.19%;
+        --photo-width: 16.45%;
+        --photo-scale: 2.5;
     }
 
     .photo-2 {
-        --photo-top: -10px;
-        --photo-right: -10px;
+        --photo-top: 80.76%;
+        --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-left: 81.29%;
+        --photo-width: 17.1%;
+        --photo-scale: 2;
     }
 
     .photo-3 {
-        --photo-top: 80px;
+        --photo-top: -3.48%;
         --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: -20px;
-        --photo-width: 120px;
+        --photo-left: -6.77%;
+        --photo-width: 16.77%;
+        --photo-scale: 2;
     }
 
     .photo-4 {
-        --photo-top: 100px;
-        --photo-right: -20px;
+        --photo-top: 43.03%;
+        --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-left: 78.71%;
+        --photo-width: 15.48%;
+        --photo-scale: 2.5;
     }
 
     .photo-5 {
-        --photo-top: 180px;
+        --photo-top: -0.61%;
         --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: -15px;
-        --photo-width: 120px;
+        --photo-left: 80.65%;
+        --photo-width: 17.74%;
+        --photo-scale: 2;
     }
 
     .photo-6 {
-        --photo-top: 200px;
-        --photo-right: -15px;
+        --photo-top: 41.06%;
+        --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-left: -4.19%;
+        --photo-width: 15.48%;
+        --photo-scale: 2.5;
     }
 
     .photo-7 {
-        --photo-top: 280px;
+        --photo-top: 66.52%;
         --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: -10px;
-        --photo-width: 120px;
+        --photo-left: 81.61%;
+        --photo-width: 16.77%;
+        --photo-scale: 2.5;
     }
 
     .photo-8 {
-        --photo-top: 300px;
-        --photo-right: -10px;
+        --photo-top: 49.09%;
+        --photo-right: auto;
         --photo-bottom: auto;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-left: 8.06%;
+        --photo-width: 15.48%;
+        --photo-scale: 1;
     }
 
     .photo-9 {
-        --photo-top: auto;
+        --photo-top: 53.94%;
         --photo-right: auto;
-        --photo-bottom: 100px;
-        --photo-left: -20px;
-        --photo-width: 120px;
+        --photo-bottom: auto;
+        --photo-left: -3.23%;
+        --photo-width: 16.77%;
+        --photo-scale: 2;
     }
 
     .photo-10 {
-        --photo-top: auto;
-        --photo-right: -20px;
-        --photo-bottom: 80px;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-top: 10.61%;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: -6.77%;
+        --photo-width: 17.74%;
+        --photo-scale: 2;
     }
 
     .photo-11 {
-        --photo-top: auto;
+        --photo-top: 80%;
         --photo-right: auto;
-        --photo-bottom: -20px;
-        --photo-left: 0;
-        --photo-width: 120px;
+        --photo-bottom: auto;
+        --photo-left: -9.35%;
+        --photo-width: 17.74%;
+        --photo-scale: 2;
     }
 
     .photo-12 {
-        --photo-top: auto;
-        --photo-right: 0;
-        --photo-bottom: -10px;
-        --photo-left: auto;
-        --photo-width: 120px;
+        --photo-top: 20.61%;
+        --photo-right: auto;
+        --photo-bottom: auto;
+        --photo-left: 82.9%;
+        --photo-width: 15.48%;
+        --photo-scale: 2.5;
     }
 
     .story-layout-editor {
