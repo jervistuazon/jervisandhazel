@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const scatterPhotos = Array.from(document.querySelectorAll('.scatter-photo'));
     const storyWrapper = document.querySelector('.story-content-wrapper');
+    const pageSections = Array.from(document.querySelectorAll('section[id]'));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const storyEditorEnabled = new URLSearchParams(window.location.search).get('storyEditor') === '1';
     const STORY_LAYOUT_STORAGE_KEY = 'wedding-story-photo-layout-v1';
@@ -581,6 +582,37 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', updateNavbar, { passive: true });
     }
 
+    const updateActiveNavSection = () => {
+        if (navItems.length === 0 || pageSections.length === 0) {
+            return;
+        }
+
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const probeLine = window.innerHeight * 0.38 + navbarHeight;
+        let activeId = pageSections[0]?.id || '';
+
+        pageSections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= probeLine && rect.bottom >= probeLine) {
+                activeId = section.id;
+            }
+        });
+
+        const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+        if (reachedBottom && pageSections[pageSections.length - 1]) {
+            activeId = pageSections[pageSections.length - 1].id;
+        }
+
+        navItems.forEach((link) => {
+            const matches = link.getAttribute('href') === `#${activeId}`;
+            link.classList.toggle('is-active', matches);
+        });
+    };
+
+    updateActiveNavSection();
+    window.addEventListener('scroll', updateActiveNavSection, { passive: true });
+    window.addEventListener('resize', updateActiveNavSection);
+
     if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
@@ -596,27 +628,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animatedElements.forEach((element) => {
             revealObserver.observe(element);
-        });
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                const id = entry.target.getAttribute('id');
-                if (!id || !entry.isIntersecting) {
-                    return;
-                }
-
-                navItems.forEach((link) => {
-                    const matches = link.getAttribute('href') === `#${id}`;
-                    link.classList.toggle('is-active', matches);
-                });
-            });
-        }, {
-            threshold: 0.45,
-            rootMargin: '-20% 0px -30% 0px'
-        });
-
-        document.querySelectorAll('section[id]').forEach((section) => {
-            sectionObserver.observe(section);
         });
     } else {
         animatedElements.forEach((element) => {

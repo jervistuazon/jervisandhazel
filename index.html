@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
@@ -63,7 +63,6 @@
         <div class="section-wash" aria-hidden="true"></div>
         <div class="container text-center animate-on-scroll">
             <div class="story-content-wrapper">
-                <!-- Background Scattered Photos -->
                 <div class="scattered-photos">
                     <img src="photos/photo-1.webp" alt="Jervis and Hazel" class="scatter-photo photo-1" data-parallax data-parallax-strength="10">
                     <img src="photos/photo-2.webp" alt="Jervis and Hazel" class="scatter-photo photo-2" data-parallax data-parallax-strength="14">
@@ -79,7 +78,6 @@
                     <img src="photos/photo-12.webp" alt="Jervis and Hazel" class="scatter-photo photo-12" data-parallax data-parallax-strength="8">
                 </div>
 
-                <!-- Foreground Text Box -->
                 <div class="story-text-box">
                     <h2 class="section-title">A Note from Us</h2>
                     <div class="gold-divider"></div>
@@ -136,26 +134,32 @@
             <h2 class="section-title">Information</h2>
             <div class="gold-divider"></div>
             <p class="section-text details-intro">
-                Shared here for reference, with the date, time, and venue details for our celebration.
+                A few details for the day, shared here with love and kept close at hand.
             </p>
 
-            <div class="details-grid">
-                <div class="detail-card animate-on-scroll" style="transition-delay: 0.2s;">
-                    <h3>Date</h3>
-                    <p>Saturday, May 9, 2026</p>
+            <div class="details-paper animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="detail-row">
+                    <p class="detail-label">Date</p>
+                    <div class="detail-copy">
+                        <h3>Saturday, May 9, 2026</h3>
+                        <p>An intimate celebration with our closest family and friends.</p>
+                    </div>
                 </div>
-
-                <div class="detail-card animate-on-scroll" style="transition-delay: 0.4s;">
-                    <h3>Time</h3>
-                    <p>4:00 PM</p>
+                <div class="detail-row">
+                    <p class="detail-label">Time</p>
+                    <div class="detail-copy">
+                        <h3>4:00 PM</h3>
+                        <p>Please arrive a little earlier so the afternoon begins gently and on time.</p>
+                    </div>
                 </div>
-
-                <div class="detail-card animate-on-scroll" style="transition-delay: 0.6s;">
-                    <h3>Venue</h3>
-                    <p>Asuncion&rsquo;s Private Dining</p>
-                    <p>Outdoor Garden</p>
+                <div class="detail-row">
+                    <p class="detail-label">Venue</p>
+                    <div class="detail-copy">
+                        <h3>Asuncion&rsquo;s Private Dining</h3>
+                        <p>Outdoor Garden</p>
+                        <p>San Fernando, Pampanga</p>
+                    </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -167,16 +171,18 @@
             <div class="gold-divider"></div>
 
             <div class="location-layout">
-                <div class="map-container animate-on-scroll" style="transition-delay: 0.2s;">
-                    <iframe
-                        src="https://www.google.com/maps?q=Asuncion%27s+Private+Dining+Outdoor+Garden,+6th+St.+Maligaya+Village,+San+Fernando,+Pampanga&output=embed"
-                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div class="location-note animate-on-scroll" style="transition-delay: 0.4s;">
-                    <p class="location-kicker">Address</p>
+                <div class="location-note animate-on-scroll" style="transition-delay: 0.2s;">
+                    <p class="location-kicker">Venue Address</p>
                     <h3>Asuncion&rsquo;s Private Dining Outdoor Garden</h3>
                     <p>6th St. Maligaya Village<br>San Fernando, Pampanga</p>
-                    <p class="location-note-quiet">Use the map to view directions to the venue.</p>
+                </div>
+                <div class="map-panel animate-on-scroll" style="transition-delay: 0.4s;">
+                    <p class="map-kicker">Directions</p>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps?q=Asuncion%27s+Private+Dining+Outdoor+Garden,+6th+St.+Maligaya+Village,+San+Fernando,+Pampanga&output=embed"
+                            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
