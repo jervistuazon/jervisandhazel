@@ -598,13 +598,28 @@ img {
     filter: saturate(0.92);
 }
 
-.scatter-photo:hover,
 .scatter-photo.mobile-active {
     z-index: 50 !important;
     opacity: 1 !important;
     filter: saturate(1.02);
     transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.16)) rotate(calc(var(--photo-rotation) * 0.18)) !important;
     box-shadow: 0 26px 55px rgba(20, 29, 39, 0.24);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .scatter-photo:hover {
+        z-index: 50 !important;
+        opacity: 1 !important;
+        filter: saturate(1.02);
+        transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.16)) rotate(calc(var(--photo-rotation) * 0.18)) !important;
+        box-shadow: 0 26px 55px rgba(20, 29, 39, 0.24);
+    }
+}
+
+@media (max-width: 768px) and (hover: hover) and (pointer: fine) {
+    .scatter-photo:hover {
+        transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.12)) rotate(calc(var(--photo-rotation) * 0.25)) !important;
+    }
 }
 
 .photo-1 {
@@ -1303,7 +1318,6 @@ body.story-layout-editor-mode .story-layout-editor {
         pointer-events: auto;
     }
 
-    .scatter-photo:hover,
     .scatter-photo.mobile-active {
         transform: translate3d(var(--parallax-x), var(--parallax-y), 0) scale(calc(var(--photo-scale, 1) * 1.12)) rotate(calc(var(--photo-rotation) * 0.25)) !important;
     }

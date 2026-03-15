@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let storyLayoutEditor = null;
     let selectedStoryPhoto = null;
     let activeStoryDrag = null;
+    let activeStoryPress = null;
     let wasDesktopStoryViewport = window.innerWidth > STORY_LAYOUT_BREAKPOINT;
 
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -26,6 +27,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDesktopStoryViewport = () => window.innerWidth > STORY_LAYOUT_BREAKPOINT;
     const getStoryViewportProfile = () => (isDesktopStoryViewport() ? 'desktop' : 'mobile');
     const getStoryViewportLabel = () => (isDesktopStoryViewport() ? 'Desktop' : 'Mobile');
+    const clearMobileStoryPhotoState = (exceptPhoto = null) => {
+        scatterPhotos.forEach((photo) => {
+            if (photo !== exceptPhoto) {
+                photo.classList.remove('mobile-active');
+            }
+        });
+
+        if (!exceptPhoto) {
+            activeStoryPress = null;
+        }
+    };
+
+    const activateMobileStoryPhoto = (photo) => {
+        clearMobileStoryPhotoState(photo);
+        photo.classList.add('mobile-active');
+        activeStoryPress = photo;
+    };
+
+    const releaseMobileStoryPhoto = (photo) => {
+        photo.classList.remove('mobile-active');
+
+        if (activeStoryPress === photo) {
+            activeStoryPress = null;
+        }
+    };
 
     const readStoryLayouts = () => {
         try {
@@ -601,27 +627,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         scatterPhotos.forEach((photo) => {
-            photo.addEventListener('touchstart', function () {
-                if (storyEditorEnabled) {
+            if ('PointerEvent' in window) {
+                photo.addEventListener('pointerdown', (event) => {
+                    if (storyEditorEnabled || (event.pointerType !== 'touch' && event.pointerType !== 'pen')) {
+                        return;
+                    }
+
+                    activateMobileStoryPhoto(photo);
+
+                    if (photo.setPointerCapture) {
+                        try {
+                            photo.setPointerCapture(event.pointerId);
+                        } catch (error) {
+                            // Some browsers can reject pointer capture for passive press effects.
+                        }
+                    }
+                }, { passive: true });
+
+                photo.addEventListener('pointerup', (event) => {
+                    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+                        releaseMobileStoryPhoto(photo);
+                    }
+                }, { passive: true });
+
+                photo.addEventListener('pointercancel', (event) => {
+                    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+                        releaseMobileStoryPhoto(photo);
+                    }
+                }, { passive: true });
+
+                photo.addEventListener('lostpointercapture', () => {
+                    releaseMobileStoryPhoto(photo);
+                }, { passive: true });
+            } else {
+                photo.addEventListener('touchstart', () => {
+                    if (storyEditorEnabled) {
+                        return;
+                    }
+
+                    activateMobileStoryPhoto(photo);
+                }, { passive: true });
+
+                photo.addEventListener('touchend', () => {
+                    releaseMobileStoryPhoto(photo);
+                }, { passive: true });
+
+                photo.addEventListener('touchcancel', () => {
+                    releaseMobileStoryPhoto(photo);
+                }, { passive: true });
+            }
+        });
+
+        if ('PointerEvent' in window) {
+            document.addEventListener('pointerdown', (event) => {
+                if (storyEditorEnabled || (event.pointerType !== 'touch' && event.pointerType !== 'pen')) {
                     return;
                 }
 
-                scatterPhotos.forEach((item) => item.classList.remove('mobile-active'));
-                this.classList.add('mobile-active');
+                if (!event.target.closest('.scatter-photo')) {
+                    clearMobileStoryPhotoState();
+                }
             }, { passive: true });
-
-            photo.addEventListener('touchend', function () {
-                this.classList.remove('mobile-active');
+        } else {
+            document.addEventListener('touchstart', (event) => {
+                if (!event.target.closest('.scatter-photo')) {
+                    clearMobileStoryPhotoState();
+                }
             }, { passive: true });
+        }
 
-            photo.addEventListener('touchcancel', function () {
-                this.classList.remove('mobile-active');
-            }, { passive: true });
-        });
-
-        document.addEventListener('touchstart', (event) => {
-            if (!event.target.classList.contains('scatter-photo')) {
-                scatterPhotos.forEach((photo) => photo.classList.remove('mobile-active'));
+        window.addEventListener('scroll', () => {
+            if (activeStoryPress) {
+                releaseMobileStoryPhoto(activeStoryPress);
             }
         }, { passive: true });
 
