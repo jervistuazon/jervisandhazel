@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedStoryPhoto = null;
     let activeStoryDrag = null;
     let activeStoryPress = null;
+    let activeStoryTouchId = null;
     let wasDesktopStoryViewport = window.innerWidth > STORY_LAYOUT_BREAKPOINT;
 
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDesktopStoryViewport = () => window.innerWidth > STORY_LAYOUT_BREAKPOINT;
     const getStoryViewportProfile = () => (isDesktopStoryViewport() ? 'desktop' : 'mobile');
     const getStoryViewportLabel = () => (isDesktopStoryViewport() ? 'Desktop' : 'Mobile');
+    const touchListIncludesId = (touchList, touchId) => Array.from(touchList || []).some((touch) => touch.identifier === touchId);
     const clearMobileStoryPhotoState = (exceptPhoto = null) => {
         scatterPhotos.forEach((photo) => {
             if (photo !== exceptPhoto) {
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!exceptPhoto) {
             activeStoryPress = null;
+            activeStoryTouchId = null;
         }
     };
 
@@ -46,11 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const releaseMobileStoryPhoto = (photo) => {
+        if (!photo) {
+            activeStoryPress = null;
+            activeStoryTouchId = null;
+            return;
+        }
+
         photo.classList.remove('mobile-active');
 
         if (activeStoryPress === photo) {
             activeStoryPress = null;
         }
+
+        activeStoryTouchId = null;
     };
 
     const readStoryLayouts = () => {
@@ -627,77 +638,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         scatterPhotos.forEach((photo) => {
-            if ('PointerEvent' in window) {
-                photo.addEventListener('pointerdown', (event) => {
-                    if (storyEditorEnabled || (event.pointerType !== 'touch' && event.pointerType !== 'pen')) {
-                        return;
-                    }
-
-                    activateMobileStoryPhoto(photo);
-
-                    if (photo.setPointerCapture) {
-                        try {
-                            photo.setPointerCapture(event.pointerId);
-                        } catch (error) {
-                            // Some browsers can reject pointer capture for passive press effects.
-                        }
-                    }
-                }, { passive: true });
-
-                photo.addEventListener('pointerup', (event) => {
-                    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
-                        releaseMobileStoryPhoto(photo);
-                    }
-                }, { passive: true });
-
-                photo.addEventListener('pointercancel', (event) => {
-                    if (event.pointerType === 'touch' || event.pointerType === 'pen') {
-                        releaseMobileStoryPhoto(photo);
-                    }
-                }, { passive: true });
-
-                photo.addEventListener('lostpointercapture', () => {
-                    releaseMobileStoryPhoto(photo);
-                }, { passive: true });
-            } else {
-                photo.addEventListener('touchstart', () => {
-                    if (storyEditorEnabled) {
-                        return;
-                    }
-
-                    activateMobileStoryPhoto(photo);
-                }, { passive: true });
-
-                photo.addEventListener('touchend', () => {
-                    releaseMobileStoryPhoto(photo);
-                }, { passive: true });
-
-                photo.addEventListener('touchcancel', () => {
-                    releaseMobileStoryPhoto(photo);
-                }, { passive: true });
-            }
-        });
-
-        if ('PointerEvent' in window) {
-            document.addEventListener('pointerdown', (event) => {
-                if (storyEditorEnabled || (event.pointerType !== 'touch' && event.pointerType !== 'pen')) {
+            photo.addEventListener('touchstart', (event) => {
+                if (storyEditorEnabled) {
                     return;
                 }
 
-                if (!event.target.closest('.scatter-photo')) {
-                    clearMobileStoryPhotoState();
+                const [touch] = event.changedTouches;
+                if (!touch) {
+                    return;
                 }
-            }, { passive: true });
-        } else {
-            document.addEventListener('touchstart', (event) => {
-                if (!event.target.closest('.scatter-photo')) {
-                    clearMobileStoryPhotoState();
-                }
-            }, { passive: true });
-        }
 
-        window.addEventListener('scroll', () => {
-            if (activeStoryPress) {
+                activateMobileStoryPhoto(photo);
+                activeStoryTouchId = touch.identifier;
+            }, { passive: true });
+        });
+
+        document.addEventListener('touchstart', (event) => {
+            if (storyEditorEnabled) {
+                return;
+            }
+
+            if (!event.target.closest('.scatter-photo') && activeStoryTouchId === null) {
+                clearMobileStoryPhotoState();
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (event) => {
+            if (activeStoryTouchId === null || !activeStoryPress) {
+                return;
+            }
+
+            if (touchListIncludesId(event.touches, activeStoryTouchId)) {
+                activeStoryPress.classList.add('mobile-active');
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchend', (event) => {
+            if (activeStoryTouchId !== null && touchListIncludesId(event.changedTouches, activeStoryTouchId)) {
+                releaseMobileStoryPhoto(activeStoryPress);
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchcancel', (event) => {
+            if (activeStoryTouchId !== null && touchListIncludesId(event.changedTouches, activeStoryTouchId)) {
                 releaseMobileStoryPhoto(activeStoryPress);
             }
         }, { passive: true });
