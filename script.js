@@ -559,6 +559,98 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('pointercancel', handleStoryDragEnd);
     };
 
+
+    const enableWeightedScroll = () => {
+        if (reduceMotion) {
+            return;
+        }
+
+        const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+        if (!supportsFinePointer) {
+            return;
+        }
+
+        let targetY = window.scrollY;
+        let currentY = window.scrollY;
+        let rafId = null;
+        let lastTimestamp = 0;
+        let isUserScrolling = false;
+
+        const damping = 0.12;
+        const maxStep = 140;
+
+        const stopAnimation = () => {
+            if (rafId) {
+                window.cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        };
+
+        const animate = (timestamp) => {
+            if (!lastTimestamp) {
+                lastTimestamp = timestamp;
+            }
+
+            const dt = Math.min((timestamp - lastTimestamp) / 16.67, 2);
+            lastTimestamp = timestamp;
+
+            const delta = targetY - currentY;
+            currentY += delta * Math.min(damping * dt, 0.32);
+
+            if (Math.abs(delta) < 0.45) {
+                currentY = targetY;
+            }
+
+            window.scrollTo({ top: currentY, behavior: 'auto' });
+
+            if (Math.abs(targetY - currentY) > 0.45 || isUserScrolling) {
+                rafId = window.requestAnimationFrame(animate);
+            } else {
+                stopAnimation();
+                lastTimestamp = 0;
+            }
+        };
+
+        const startAnimation = () => {
+            if (!rafId) {
+                rafId = window.requestAnimationFrame(animate);
+            }
+        };
+
+        window.addEventListener('wheel', (event) => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+                return;
+            }
+
+            event.preventDefault();
+            isUserScrolling = true;
+
+            const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+            const intendedStep = Math.sign(event.deltaY) * Math.min(Math.abs(event.deltaY), maxStep);
+            targetY = clamp(targetY + intendedStep, 0, maxScroll);
+
+            startAnimation();
+
+            window.clearTimeout(enableWeightedScroll.scrollEndTimer);
+            enableWeightedScroll.scrollEndTimer = window.setTimeout(() => {
+                isUserScrolling = false;
+            }, 90);
+        }, { passive: false });
+
+        window.addEventListener('resize', () => {
+            const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+            targetY = clamp(targetY, 0, maxScroll);
+            currentY = clamp(currentY, 0, maxScroll);
+        });
+
+        window.addEventListener('keydown', () => {
+            targetY = window.scrollY;
+            currentY = window.scrollY;
+            stopAnimation();
+            isUserScrolling = false;
+        }, { passive: true });
+    };
+
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -572,6 +664,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    enableWeightedScroll();
 
     if (navbar && !navbar.hasAttribute('data-static-scrolled')) {
         const updateNavbar = () => {
