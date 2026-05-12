@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wedding highlights from Jervis and Hazel.">
+  <meta name="robots" content="index,follow">
+  <title>Jervis & Hazel | Wedding Gallery</title>
+  <link rel="canonical" href="https://jervisandhazel.com/wedding/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/wedding.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Jervis & Hazel</p>
+      <h1>Our Wedding Gallery</h1>
+      <p class="hero-copy">A cinematic collection of moments from our celebration. This page is currently using curated placeholder images while we prepare our full wedding album.</p>
+      <a class="cta" href="#gallery">View Gallery</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="story" id="story">
+      <div class="container">
+        <h2>Our Story</h2>
+        <p>
+          We started as two friends sharing ordinary days, and somewhere along the way those days became our favorite memories.
+          This wedding marks the beginning of our next chapter together, surrounded by people we love.
+        </p>
+      </div>
+    </section>
+
+    <section class="gallery-wrap" id="gallery">
+      <div class="container">
+        <h2>Gallery</h2>
+        <p class="gallery-lead">Placeholders inspired by elegant wedding editorials. Your final photos can be dropped in later without changing the layout.</p>
+        <div class="gallery-grid">
+          <button class="card" data-full="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 1">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Bride and groom in soft evening light">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 2">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Couple holding hands during wedding ceremony">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 3">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Wedding bouquet and table details">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 4">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=80" alt="Reception dinner table with candles">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 5">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80" alt="Bride and groom portrait outdoors">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 6">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=900&q=80" alt="Wedding cake and floral arrangement">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 7">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Bridal party celebrating together">
+          </button>
+          <button class="card" data-full="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=80" aria-label="Open photo 8">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Romantic wedding dance moment">
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Image preview">
+    <button id="closeLightbox" class="close" aria-label="Close image">×</button>
+    <img id="lightboxImage" src="" alt="Expanded gallery preview">
+  </dialog>
+
+  <script src="assets/js/wedding.js"></script>
+</body>
+</html>
