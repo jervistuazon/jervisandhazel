@@ -4,6 +4,7 @@ const closeLightbox = document.getElementById('closeLightbox');
 const hero = document.querySelector('.hero');
 const scrollCue = document.querySelector('.scroll-cue');
 const cards = [...document.querySelectorAll('.card')];
+const sections = [...document.querySelectorAll('.story, .gallery-wrap')];
 
 for (const card of cards) {
   card.addEventListener('click', () => {
@@ -47,6 +48,24 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
 
 revealTargets.forEach((el) => observer.observe(el));
+
+sections.forEach((section) => {
+  section.classList.add('section-transition');
+  observer.observe(section);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (event) => {
+    const targetId = anchor.getAttribute('href');
+    if (!targetId || targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', targetId);
+  });
+});
 
 window.addEventListener('scroll', () => {
   if (!hero) return;
