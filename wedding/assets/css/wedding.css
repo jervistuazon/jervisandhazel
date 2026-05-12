@@ -1,0 +1,120 @@
+:root {
+  --bg: #fffaf7;
+  --text: #4f3f3a;
+  --muted: #7c6962;
+  --accent: #b8878f;
+  --accent-soft: #ead4d8;
+  --card: #fff;
+  --shadow: 0 20px 45px rgba(79, 63, 58, 0.12);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top left, #f8e8e8 0%, transparent 35%), var(--bg);
+}
+
+h1,h2 {
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+}
+
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero {
+  min-height: 88vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-image: linear-gradient(rgba(44, 30, 30, 0.38), rgba(44, 30, 30, 0.38)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.hero-content { width: min(820px, calc(100% - 2rem)); }
+.eyebrow { text-transform: uppercase; letter-spacing: .2em; font-size: .78rem; opacity: .9; }
+.hero h1 { font-size: clamp(2.6rem, 8vw, 5rem); margin: .6rem 0; }
+.hero-copy { max-width: 680px; margin: 0 auto 2rem; line-height: 1.8; }
+.cta {
+  display: inline-block;
+  padding: .9rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.5);
+  text-decoration: none;
+}
+
+.story, .gallery-wrap { padding: 5rem 0; }
+.story h2, .gallery-wrap h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.story p, .gallery-lead {
+  max-width: 760px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.gallery-grid {
+  margin-top: 2rem;
+  columns: 1;
+  column-gap: 1rem;
+}
+@media (min-width: 700px) { .gallery-grid { columns: 2; } }
+@media (min-width: 1000px) { .gallery-grid { columns: 3; } }
+
+.card {
+  width: 100%;
+  margin: 0 0 1rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  break-inside: avoid;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: zoom-in;
+}
+.card img {
+  width: 100%;
+  display: block;
+  transition: transform .45s ease;
+}
+.card:hover img { transform: scale(1.03); }
+
+.lightbox {
+  width: min(1200px, calc(100% - 1rem));
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  background: #111;
+}
+.lightbox::backdrop { background: rgba(0,0,0,.76); }
+.lightbox img {
+  width: 100%;
+  display: block;
+  max-height: 85vh;
+  object-fit: contain;
+}
+.close {
+  position: absolute;
+  top: .5rem;
+  right: .6rem;
+  border: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  cursor: pointer;
+}
