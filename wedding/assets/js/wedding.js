@@ -33,7 +33,7 @@ const revealTargets = [
 
 revealTargets.forEach((el, index) => {
   el.classList.add('reveal');
-  el.style.setProperty('--reveal-delay', `${Math.min(index * 70, 700)}ms`);
+  el.style.setProperty('--reveal-delay', `${Math.min(index * 40, 400)}ms`);
 });
 
 const observer = new IntersectionObserver((entries) => {
