@@ -6,6 +6,7 @@
   --accent-soft: #ead4d8;
   --card: #fff;
   --shadow: 0 20px 45px rgba(79, 63, 58, 0.12);
+  --shadow-hover: 0 28px 60px rgba(79, 63, 58, 0.18);
 }
 
 * { box-sizing: border-box; }
@@ -85,13 +86,31 @@ h1,h2 {
   overflow: hidden;
   box-shadow: var(--shadow);
   cursor: zoom-in;
+  transition: transform .6s cubic-bezier(.22,1,.36,1), box-shadow .6s cubic-bezier(.22,1,.36,1), filter .6s ease;
 }
 .card img {
   width: 100%;
   display: block;
-  transition: transform .45s ease;
+  transition: transform .8s cubic-bezier(.22,1,.36,1);
 }
-.card:hover img { transform: scale(1.03); }
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+.card:hover img { transform: scale(1.04); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) scale(.98);
+  filter: blur(6px);
+  transition: opacity .8s ease, transform .9s cubic-bezier(.22,1,.36,1), filter .9s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
 
 .lightbox {
   width: min(1200px, calc(100% - 1rem));
@@ -117,4 +136,15 @@ h1,h2 {
   border-radius: 50%;
   background: rgba(255,255,255,.85);
   cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .card,
+  .card img {
+    transition: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
 }
