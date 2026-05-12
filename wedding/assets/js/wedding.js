@@ -2,6 +2,7 @@ const lightbox = document.getElementById('lightbox');
 const lightboxImage = document.getElementById('lightboxImage');
 const closeLightbox = document.getElementById('closeLightbox');
 const hero = document.querySelector('.hero');
+const scrollCue = document.querySelector('.scroll-cue');
 const cards = [...document.querySelectorAll('.card')];
 
 for (const card of cards) {
@@ -51,4 +52,9 @@ window.addEventListener('scroll', () => {
   if (!hero) return;
   const offset = Math.min(window.scrollY * 0.2, 120);
   hero.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+
+  if (scrollCue) {
+    scrollCue.style.opacity = window.scrollY > 24 ? '0' : '0.78';
+    scrollCue.style.transform = window.scrollY > 24 ? 'translateX(-50%) translateY(8px)' : 'translateX(-50%)';
+  }
 }, { passive: true });
