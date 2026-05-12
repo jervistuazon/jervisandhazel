@@ -6,6 +6,7 @@ const nextImage = document.getElementById('nextImage');
 const lightboxCounter = document.getElementById('lightboxCounter');
 const lightboxCaption = document.getElementById('lightboxCaption');
 const hero = document.querySelector('.hero');
+const scrollCue = document.querySelector('.scroll-cue');
 const cards = [...document.querySelectorAll('.card')];
 const sections = [...document.querySelectorAll('.story, .gallery-wrap, .chapter')];
 let activeIndex = 0;
@@ -85,8 +86,31 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+sections.forEach((section) => {
+  section.classList.add('section-transition');
+  observer.observe(section);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (event) => {
+    const targetId = anchor.getAttribute('href');
+    if (!targetId || targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    history.replaceState(null, '', targetId);
+  });
+});
+
 window.addEventListener('scroll', () => {
   if (!hero) return;
   const offset = Math.min(window.scrollY * 0.2, 120);
   hero.style.backgroundPosition = `center calc(50% + ${offset}px)`;
+
+  if (scrollCue) {
+    scrollCue.style.opacity = window.scrollY > 24 ? '0' : '0.78';
+    scrollCue.style.transform = window.scrollY > 24 ? 'translateX(-50%) translateY(8px)' : 'translateX(-50%)';
+  }
 }, { passive: true });
