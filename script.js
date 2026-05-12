@@ -675,7 +675,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    enableWeightedScroll();
+    const weightedScrollEnabled = document.body?.dataset?.weightedScroll === 'true';
+    if (weightedScrollEnabled) {
+        enableWeightedScroll();
+    }
 
     if (navbar && !navbar.hasAttribute('data-static-scrolled')) {
         const updateNavbar = () => {
