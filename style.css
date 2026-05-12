@@ -133,6 +133,134 @@ img {
     background: linear-gradient(90deg, rgba(184, 145, 95, 0), rgba(184, 145, 95, 0.95), rgba(184, 145, 95, 0));
 }
 
+/* Subtle "wow" polish */
+.floral-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.floral-frame::after {
+    content: '';
+    position: absolute;
+    inset: -120% -30%;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 35%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0) 65%);
+    transform: translateX(-120%) rotate(8deg);
+    animation: frameSheen 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.section-title {
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184, 145, 95, 0.9), transparent);
+    transform: translateX(-50%);
+    transition: width 0.8s ease;
+}
+
+.animate-on-scroll.is-visible .section-title::after {
+    width: min(180px, 42%);
+}
+
+.hero-petals {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-petal {
+    position: absolute;
+    width: 9px;
+    height: 16px;
+    border-radius: 60% 40% 65% 35%;
+    opacity: 0.2;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), rgba(220, 195, 157, 0.3));
+    animation: heroPetalFloat 13s ease-in-out infinite;
+}
+
+.petal-1 { top: 18%; left: 12%; animation-delay: 0s; }
+.petal-2 { top: 28%; left: 78%; animation-delay: -3s; }
+.petal-3 { top: 56%; left: 22%; animation-delay: -6s; }
+.petal-4 { top: 62%; left: 68%; animation-delay: -8s; }
+.petal-5 { top: 40%; left: 48%; animation-delay: -5s; }
+
+.names {
+    background: linear-gradient(100deg, #fef7ee 15%, #fff 40%, #e7cda8 52%, #fff 64%, #fef7ee 85%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.names.shimmer-once {
+    color: transparent;
+    animation: namesShimmer 1.8s ease-out 1;
+}
+
+.gallery-card img {
+    transition: transform 7s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.06);
+}
+
+.scatter-photo {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.scatter-photo:hover {
+    transform: translateY(-3px) rotate(calc(var(--photo-rotation, 0deg) + 1.3deg)) scale(calc(var(--photo-scale, 1) * 1.01));
+    box-shadow: 0 18px 34px rgba(91, 72, 63, 0.18);
+}
+
+@keyframes frameSheen {
+    0%,
+    70%,
+    100% {
+        transform: translateX(-120%) rotate(8deg);
+    }
+
+    82% {
+        transform: translateX(120%) rotate(8deg);
+    }
+}
+
+@keyframes heroPetalFloat {
+    0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+    50% { transform: translateY(-10px) translateX(5px) rotate(6deg); }
+}
+
+@keyframes namesShimmer {
+    0% { background-position: 130% 0; }
+    100% { background-position: -20% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .floral-frame::after {
+        animation: none;
+    }
+
+    .gallery-card img {
+        transition: none;
+    }
+
+    .hero-petal,
+    .names.shimmer-once {
+        animation: none;
+    }
+}
+
 .section-seal,
 .hero-seal {
     display: inline-grid;

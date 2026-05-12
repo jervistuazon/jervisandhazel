@@ -7,10 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const scatterPhotos = Array.from(document.querySelectorAll('.scatter-photo'));
     const storyWrapper = document.querySelector('.story-content-wrapper');
     const pageSections = Array.from(document.querySelectorAll('section[id]'));
+    const heroNames = document.querySelector('.names');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const storyEditorEnabled = new URLSearchParams(window.location.search).get('storyEditor') === '1';
     const STORY_LAYOUT_STORAGE_KEY = 'wedding-story-photo-layout-v1';
     const STORY_LAYOUT_BREAKPOINT = 768;
+
+    if (heroNames && !reduceMotion) {
+        requestAnimationFrame(() => {
+            heroNames.classList.add('shimmer-once');
+            heroNames.addEventListener('animationend', () => {
+                heroNames.classList.remove('shimmer-once');
+            }, { once: true });
+        });
+    }
 
     let storyLayouts = {
         desktop: null,
