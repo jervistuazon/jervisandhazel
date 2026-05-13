@@ -16,7 +16,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('../graphics/background-frame.svg') center/cover no-repeat;
+  background: url('../graphics/wedding-photo-background.png') center/cover no-repeat;
   opacity: 0.72;
 }
 h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500; }
