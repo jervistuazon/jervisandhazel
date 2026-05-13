@@ -16,7 +16,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url('../graphics/background-frame.svg') center/cover no-repeat;
+  background: url('../graphics/wedding-photo-background.png') center/cover no-repeat;
   opacity: 0.72;
 }
 h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500; }
@@ -117,8 +117,24 @@ h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500
 .nav { top: 50%; transform: translateY(-50%); width: 2.3rem; height: 2.3rem; font-size: 1.5rem; }
 .prev { left: .7rem; }
 .next { right: .7rem; }
-.meta { padding: .8rem 1rem 1rem; display: flex; justify-content: space-between; gap: 1rem; align-items: center; font-size: .9rem; }
-#lightboxCaption { margin: 0; color: #ecd9d4; }
+.lightbox-mark {
+  position: absolute;
+  left: 50%;
+  bottom: .9rem;
+  transform: translateX(-50%);
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: .95rem;
+  color: rgba(245, 234, 225, 0.92);
+  background: rgba(20, 14, 12, 0.36);
+  border: 1px solid rgba(255, 245, 236, 0.34);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
 
 .scroll-cue { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); z-index: 2; display: flex; align-items: center; gap: .65rem; text-transform: uppercase; letter-spacing: .14em; font-size: .67rem; opacity: .8; transition: opacity .4s ease, transform .4s ease; }
 .scroll-line { width: 2.7rem; height: 1px; background: rgba(255,255,255,.8); }
