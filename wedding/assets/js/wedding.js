@@ -3,8 +3,6 @@ const lightboxImage = document.getElementById('lightboxImage');
 const closeLightbox = document.getElementById('closeLightbox');
 const prevImage = document.getElementById('prevImage');
 const nextImage = document.getElementById('nextImage');
-const lightboxCounter = document.getElementById('lightboxCounter');
-const lightboxCaption = document.getElementById('lightboxCaption');
 const hero = document.querySelector('.hero');
 const scrollCue = document.querySelector('.scroll-cue');
 const cards = [...document.querySelectorAll('.card')];
@@ -16,8 +14,6 @@ const updateLightbox = (index) => {
   const card = cards[activeIndex];
   lightboxImage.src = card.dataset.full;
   lightboxImage.alt = card.querySelector('img')?.alt || 'Expanded gallery preview';
-  lightboxCounter.textContent = `${activeIndex + 1} / ${cards.length}`;
-  lightboxCaption.textContent = card.dataset.caption || '';
 };
 
 cards.forEach((card, index) => {
@@ -51,6 +47,7 @@ const revealTargets = [
   document.querySelector('.gallery-wrap h2'),
   document.querySelector('.gallery-lead'),
   ...document.querySelectorAll('.chapter h3'),
+  document.querySelector('.gallery-quote'),
   ...cards
 ].filter(Boolean);
 
