@@ -16,15 +16,8 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle at 0% 100%, rgba(222, 201, 183, 0.34) 0%, rgba(248, 245, 241, 0) 22%),
-    radial-gradient(circle at 100% 0%, rgba(224, 204, 186, 0.28) 0%, rgba(248, 245, 241, 0) 20%),
-    radial-gradient(circle at 94% 90%, rgba(231, 216, 201, 0.25) 0%, rgba(248, 245, 241, 0) 18%),
-    radial-gradient(circle at 4% 12%, rgba(236, 220, 206, 0.2) 0%, rgba(248, 245, 241, 0) 16%);
-  background-repeat: no-repeat;
-  background-size: auto, auto, auto, auto;
-  background-position: left bottom, right top, right bottom, left top;
-  opacity: 0.42;
+  background: url('../graphics/background-frame.svg') center/cover no-repeat;
+  opacity: 0.72;
 }
 h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500; }
 .container { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
