@@ -47,6 +47,7 @@ const revealTargets = [
   document.querySelector('.gallery-wrap h2'),
   document.querySelector('.gallery-lead'),
   ...document.querySelectorAll('.chapter h3'),
+  document.querySelector('.gallery-quote'),
   ...cards
 ].filter(Boolean);
 

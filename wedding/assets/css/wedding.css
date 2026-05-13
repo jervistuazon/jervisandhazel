@@ -78,6 +78,47 @@ h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500
 .story p, .gallery-lead { max-width: 780px; margin: 0 auto; text-align: center; line-height: 1.9; color: var(--muted); }
 
 .chapter { margin-top: 2.3rem; }
+
+.gallery-quote {
+  margin: 3.1rem auto 0;
+  text-align: center;
+  max-width: 760px;
+  color: #8d796d;
+}
+.gallery-quote p {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+  line-height: 1.35;
+  font-style: italic;
+  letter-spacing: .015em;
+}
+.gallery-quote p::before {
+  content: '“';
+  color: #d8b89a;
+  margin-right: .35rem;
+}
+.quote-divider {
+  margin: 1.1rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+}
+.quote-divider span {
+  display: block;
+  width: clamp(56px, 10vw, 98px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(217, 187, 159, 0), rgba(217, 187, 159, .78), rgba(217, 187, 159, 0));
+}
+.quote-divider .heart {
+  width: auto;
+  height: auto;
+  background: none;
+  font-size: 1rem;
+  color: #d2ad89;
+}
+
 .chapter h3 {
   text-align: center;
   text-transform: uppercase;
