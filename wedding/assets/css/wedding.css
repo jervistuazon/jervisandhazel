@@ -9,7 +9,25 @@
 }
 * { box-sizing: border-box; }
 html, body { scroll-behavior: smooth; }
-body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--bg); }
+body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--bg); position: relative; }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 0% 100%, rgba(222, 201, 183, 0.34) 0%, rgba(248, 245, 241, 0) 22%),
+    radial-gradient(circle at 100% 0%, rgba(224, 204, 186, 0.28) 0%, rgba(248, 245, 241, 0) 20%),
+    url('../graphics/floral-left.svg'),
+    url('../graphics/floral-right.svg'),
+    url('../graphics/floral-right.svg'),
+    url('../graphics/floral-left.svg');
+  background-repeat: no-repeat;
+  background-size: auto, auto, 220px, 220px, 200px, 200px;
+  background-position: left bottom, right top, 0% 8%, 100% 9%, 96% 92%, 2% 90%;
+  opacity: 0.42;
+}
 h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500; }
 .container { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
 
@@ -60,10 +78,7 @@ h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500
 
 .story, .gallery-wrap { padding: 5rem 0; }
 
-.decorative-wrap { position: relative; overflow: hidden; }
-.floral { position: absolute; width: clamp(64px, 8vw, 108px); opacity: .2; pointer-events: none; }
-.floral-left { left: 0.4rem; top: 1rem; }
-.floral-right { right: 0.4rem; top: 1rem; }
+.decorative-wrap { position: relative; }
 .section-divider { display: block; width: clamp(96px, 16vw, 138px); margin: 1rem 0 1.4rem; position: relative; left: 50%; transform: translateX(-50%); opacity: .9; }
 
 .story { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -118,9 +133,6 @@ h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500
 .scroll-line { width: 2.7rem; height: 1px; background: rgba(255,255,255,.8); }
 
 @media (max-width: 900px) {
-  .floral { width: 82px; opacity: .16; }
-  .floral-left { left: .2rem; }
-  .floral-right { right: .2rem; }
   .hero { padding-top: 8.4rem; }
   .top-nav { padding-inline: 1rem; }
   .nav-links { gap: 1rem; }
@@ -128,7 +140,6 @@ h1,h2,h3 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 500
   .span-2, .span-3 { grid-column: 1 / -1; }
 }
 @media (max-width: 640px) {
-  .floral { display: none; }
   .hero h1 { max-width: 320px; }
   .editorial-grid { grid-template-columns: 1fr; }
   .card, .span-2, .span-3 { min-height: 260px; }
