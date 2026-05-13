@@ -13,15 +13,22 @@
   <link rel="stylesheet" href="assets/css/wedding.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
+  <header class="hero" id="home">
+    <nav class="top-nav" aria-label="Main">
+      <div class="brand">JH</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </nav>
+
     <div class="hero-content">
-      <p class="eyebrow">Wedding Gallery</p>
+      <p class="eyebrow">A Timeless Collection</p>
       <h1>Jervis & Hazel</h1>
-      <p class="hero-meta">May 09, 2026 · Pampanga</p>
-      <p class="hero-copy">A small civil wedding celebration and a growing collection of moments from our day.</p>
-      <a class="cta" href="#gallery">View the Gallery</a>
+      <p class="hero-copy">Our wedding memories, captured with warmth, love, and the people who made this day unforgettable.</p>
+      <a class="cta" href="#gallery">View Gallery →</a>
     </div>
+
     <div class="scroll-cue" aria-hidden="true">
       <span>Scroll</span>
       <span class="scroll-line"></span>
@@ -30,38 +37,34 @@
 
   <main>
     <section class="story" id="story">
-      <div class="container">
-        <h2>Our Story</h2>
-        <p>We started as two friends sharing ordinary days, and somewhere along the way those days became our favorite memories. This wedding marks the beginning of our next chapter together, surrounded by people we love.</p>
+      <div class="container decorative-wrap">
+        <img class="floral floral-left" src="assets/graphics/floral-left.svg" alt="" aria-hidden="true">
+        <img class="floral floral-right" src="assets/graphics/floral-right.svg" alt="" aria-hidden="true">
+        <p class="story-kicker">Welcome to our wedding journey</p>
+        <h2>We're so glad you're here.</h2>
+        <img class="section-divider" src="assets/graphics/wheat-divider.svg" alt="" aria-hidden="true">
+        <p>This space is filled with the moments, big and small, that made our day unforgettable. Thank you for being a part of our story. We hope these memories bring you as much joy as they bring to us.</p>
       </div>
     </section>
 
     <section class="gallery-wrap" id="gallery">
-      <div class="container">
-        <h2>Gallery Chapters</h2>
-        <p class="gallery-lead">Curated scenes from our ceremony, portraits, details, and reception.</p>
+      <div class="container decorative-wrap">
+        <img class="floral floral-left" src="assets/graphics/floral-left.svg" alt="" aria-hidden="true">
+        <img class="floral floral-right" src="assets/graphics/floral-right.svg" alt="" aria-hidden="true">
+        <p class="story-kicker">The Gallery</p>
+        <h2>Relive the day, all over again.</h2>
+        <p class="gallery-lead">From quiet moments to joyful celebrations, explore the memories we'll cherish forever.</p>
+        <img class="section-divider" src="assets/graphics/wheat-divider.svg" alt="" aria-hidden="true">
 
         <article class="chapter">
-          <h3>The Ceremony</h3>
+          <h3>All Photos</h3>
           <div class="editorial-grid">
             <button class="card span-2" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=80" data-caption="Ceremony vows" aria-label="Open ceremony photo 1"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Wedding ceremony moment" loading="lazy"></button>
             <button class="card" data-full="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=2200&q=80" data-caption="Garden details" aria-label="Open ceremony photo 2"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=80" alt="Ceremony table details" loading="lazy"></button>
             <button class="card" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=80" data-caption="Hands and promise" aria-label="Open ceremony photo 3"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80" alt="Couple holding hands" loading="lazy"></button>
-          </div>
-        </article>
-
-        <article class="chapter">
-          <h3>Portraits</h3>
-          <div class="editorial-grid">
-            <button class="card portrait" data-full="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=2200&q=80" data-caption="Couple portrait" aria-label="Open portrait photo 1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Bride and groom portrait" loading="lazy"></button>
+            <button class="card" data-full="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=2200&q=80" data-caption="Couple portrait" aria-label="Open portrait photo 1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Bride and groom portrait" loading="lazy"></button>
             <button class="card" data-full="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=2200&q=80" data-caption="After-ceremony walk" aria-label="Open portrait photo 2"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80" alt="Couple outdoors" loading="lazy"></button>
             <button class="card" data-full="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=2200&q=80" data-caption="First dance" aria-label="Open portrait photo 3"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Romantic wedding dance" loading="lazy"></button>
-          </div>
-        </article>
-
-        <article class="chapter">
-          <h3>Details & Reception</h3>
-          <div class="editorial-grid">
             <button class="card" data-full="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=2200&q=80" data-caption="Cake and florals" aria-label="Open detail photo 1"><img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=900&q=80" alt="Wedding cake and floral arrangement" loading="lazy"></button>
             <button class="card" data-full="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=2200&q=80" data-caption="Family and friends" aria-label="Open detail photo 2"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Bridal party celebrating" loading="lazy"></button>
             <button class="card span-3" data-full="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2400&q=80" data-caption="Evening reception atmosphere" aria-label="Open detail photo 3"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80" alt="Wedding reception with lights" loading="lazy"></button>
