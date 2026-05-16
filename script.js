@@ -663,14 +663,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+            const isOpen = hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active', isOpen);
+            document.body.classList.toggle('nav-open', isOpen);
         });
 
         navItems.forEach((item) => {
             item.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('nav-open');
             });
         });
     }
