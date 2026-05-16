@@ -9,6 +9,8 @@
   <link rel="canonical" href="https://jervisandhazel.com/wedding/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/wedding.css">
 </head>
@@ -53,18 +55,10 @@
         <img class="section-divider" src="assets/graphics/wheat-divider.svg" alt="" aria-hidden="true">
 
         <article class="chapter">
-          <h3>All Photos</h3>
-          <div class="editorial-grid">
-            <button class="card span-2" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=80" data-caption="Ceremony vows" aria-label="Open ceremony photo 1"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Wedding ceremony moment" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=2200&q=80" data-caption="Garden details" aria-label="Open ceremony photo 2"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=700&q=80" alt="Ceremony table details" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=80" data-caption="Hands and promise" aria-label="Open ceremony photo 3"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=700&q=80" alt="Couple holding hands" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=2200&q=80" data-caption="Couple portrait" aria-label="Open portrait photo 1"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Bride and groom portrait" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=2200&q=80" data-caption="After-ceremony walk" aria-label="Open portrait photo 2"><img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=900&q=80" alt="Couple outdoors" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=2200&q=80" data-caption="First dance" aria-label="Open portrait photo 3"><img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Romantic wedding dance" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=2200&q=80" data-caption="Cake and florals" aria-label="Open detail photo 1"><img src="https://images.unsplash.com/photo-1478146896981-b80fe463b330?auto=format&fit=crop&w=900&q=80" alt="Wedding cake and floral arrangement" loading="lazy"></button>
-            <button class="card" data-full="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=2200&q=80" data-caption="Family and friends" aria-label="Open detail photo 2"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Bridal party celebrating" loading="lazy"></button>
-            <button class="card span-3" data-full="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2400&q=80" data-caption="Evening reception atmosphere" aria-label="Open detail photo 3"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80" alt="Wedding reception with lights" loading="lazy"></button>
-          </div>
+          <h3 id="galleryHeading">All Photos</h3>
+          <div class="gallery-filters" id="galleryFilters" aria-label="Filter wedding photos"></div>
+          <div class="editorial-grid" id="galleryGrid" aria-labelledby="galleryHeading"></div>
+          <p class="gallery-status" id="galleryStatus" aria-live="polite"></p>
         </article>
 
         <div class="gallery-quote" aria-label="Closing wedding quote">
@@ -80,7 +74,13 @@
   <dialog id="lightbox" class="lightbox" aria-label="Image preview">
     <button id="closeLightbox" class="close" aria-label="Close image">×</button>
     <button id="prevImage" class="nav prev" aria-label="Previous image">‹</button>
-    <img id="lightboxImage" src="" alt="Expanded gallery preview">
+    <figure class="lightbox-frame">
+      <img id="lightboxImage" src="" alt="Expanded gallery preview">
+      <figcaption class="lightbox-meta">
+        <span id="lightboxCaption">Wedding photo</span>
+        <span id="lightboxCounter">1 / 1</span>
+      </figcaption>
+    </figure>
     <button id="nextImage" class="nav next" aria-label="Next image">›</button>
   </dialog>
 
