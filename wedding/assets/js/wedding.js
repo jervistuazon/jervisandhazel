@@ -14,6 +14,7 @@ const galleryStatus = document.getElementById('galleryStatus');
 const sections = [...document.querySelectorAll('.story, .gallery-wrap, .chapter')];
 
 const categories = ['All', 'Ceremony', 'Portraits', 'Family', 'Reception', 'Details'];
+const galleryAssetVersion = '20260516-1';
 
 // Replace these placeholder URLs with local files later, for example:
 // thumb: 'photos/thumbs/photo-001.webp', full: 'photos/full/photo-001.webp'
@@ -111,6 +112,12 @@ const filteredPhotos = () => {
   return galleryPhotos.filter((photo) => photo.category === activeCategory);
 };
 
+const versionedAsset = (src) => {
+  if (!src || src.startsWith('data:')) return src;
+  const separator = src.includes('?') ? '&' : '?';
+  return `${src}${separator}v=${galleryAssetVersion}`;
+};
+
 const markImageLoaded = (img) => {
   img.closest('.card')?.classList.add('is-loaded');
 };
@@ -126,7 +133,7 @@ const preloadImage = (src) => {
   if (!src) return;
   const preload = new Image();
   preload.decoding = 'async';
-  preload.src = src;
+  preload.src = versionedAsset(src);
 };
 
 const preloadNeighborImages = () => {
@@ -176,7 +183,7 @@ const createGalleryCard = (photo, index) => {
   card.setAttribute('aria-label', `Open ${photo.caption}`);
 
   const img = document.createElement('img');
-  img.src = photo.thumb;
+  img.src = versionedAsset(photo.thumb);
   img.alt = photo.alt;
   img.decoding = 'async';
   img.loading = index < 6 ? 'eager' : 'lazy';
@@ -228,7 +235,7 @@ const updateLightbox = (index) => {
   const photo = activePhotos[activeIndex];
 
   lightbox.classList.remove('is-error');
-  lightboxImage.src = photo.full;
+  lightboxImage.src = versionedAsset(photo.full);
   lightboxImage.alt = photo.alt || 'Expanded gallery preview';
   lightboxCaption.textContent = photo.caption || 'Wedding photo';
   lightboxCounter.textContent = `${activeIndex + 1} / ${activePhotos.length}`;
