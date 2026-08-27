@@ -1,0 +1,4 @@
+interface:
+  display_name: "Wedding Site Maintenance"
+  short_description: "Maintain and QA the static wedding website"
+  default_prompt: "Use this skill when updating the Jervis and Hazel wedding website, especially gallery photos, cache-busting, local previews, or GitHub Pages deployment checks."

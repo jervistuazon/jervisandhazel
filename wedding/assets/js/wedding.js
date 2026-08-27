@@ -14,7 +14,7 @@ const galleryStatus = document.getElementById('galleryStatus');
 const sections = [...document.querySelectorAll('.story, .gallery-wrap, .chapter')];
 
 const categories = ['All', 'Ceremony', 'Portraits', 'Family', 'Reception', 'Details'];
-const galleryAssetVersion = '20260516-1';
+const galleryAssetVersion = '20260517-1';
 
 // Replace these placeholder URLs with local files later, for example:
 // thumb: 'photos/thumbs/photo-001.webp', full: 'photos/full/photo-001.webp'
@@ -83,6 +83,49 @@ const galleryPhotos = [
     caption: 'Evening reception atmosphere',
     category: 'Reception',
     size: 'span-3'
+  },
+  {
+    thumb: '../photos/photo-13.webp',
+    full: '../photos/photo-13.webp',
+    alt: 'Couple portrait placeholder for wedding gallery',
+    caption: 'Portrait session',
+    category: 'Portraits'
+  },
+  {
+    thumb: '../photos/photo-14.webp',
+    full: '../photos/photo-14.webp',
+    alt: 'Family moment placeholder for wedding gallery',
+    caption: 'Loved ones together',
+    category: 'Family'
+  },
+  {
+    thumb: '../photos/photo-15.webp',
+    full: '../photos/photo-15.webp',
+    alt: 'Reception celebration placeholder for wedding gallery',
+    caption: 'Celebration moments',
+    category: 'Reception'
+  },
+  {
+    thumb: '../photos/photo-16.webp',
+    full: '../photos/photo-16.webp',
+    alt: 'Wedding detail placeholder for gallery',
+    caption: 'Quiet details',
+    category: 'Details'
+  },
+  {
+    thumb: '../photos/photo-17.webp',
+    full: '../photos/photo-17.webp',
+    alt: 'Ceremony aisle placeholder for wedding gallery',
+    caption: 'Ceremony aisle',
+    category: 'Ceremony'
+  },
+  {
+    thumb: '../photos/photo-18.webp',
+    full: '../photos/photo-18.webp',
+    alt: 'Wedding portrait placeholder for gallery',
+    caption: 'After the vows',
+    category: 'Portraits',
+    size: 'span-2'
   }
 ];
 

@@ -36,14 +36,15 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=20260516-3">
+    <link rel="preload" as="image" href="photos/heroshot.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="style.css?v=20260517-9">
 </head>
 
 <body>
 
     <!-- Navigation -->
     <nav id="navbar">
-        <ul class="nav-links">
+        <ul class="nav-links" id="primary-navigation">
             <li><a href="#home">Home</a></li>
             <li><a href="#story">Story</a></li>
             <li><a href="#gallery">Gallery</a></li>
@@ -51,11 +52,11 @@
             <li><a href="#location">Location</a></li>
             <li><a href="/wedding/">Wedding Photos</a></li>
         </ul>
-        <div class="hamburger">
+        <button class="hamburger" type="button" aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
     </nav>
 
     <!-- Hero Section -->
@@ -95,18 +96,18 @@
         <div class="container text-center animate-on-scroll">
             <div class="story-content-wrapper">
                 <div class="scattered-photos">
-                    <img src="photos/photo-1.webp" alt="Jervis and Hazel" class="scatter-photo photo-1" data-parallax data-parallax-strength="10">
-                    <img src="photos/photo-2.webp" alt="Jervis and Hazel" class="scatter-photo photo-2" data-parallax data-parallax-strength="14">
-                    <img src="photos/photo-3.webp" alt="Jervis and Hazel" class="scatter-photo photo-3" data-parallax data-parallax-strength="8">
-                    <img src="photos/photo-4.webp" alt="Jervis and Hazel" class="scatter-photo photo-4" data-parallax data-parallax-strength="12">
-                    <img src="photos/photo-5.webp" alt="Jervis and Hazel" class="scatter-photo photo-5" data-parallax data-parallax-strength="7">
-                    <img src="photos/photo-6.webp" alt="Jervis and Hazel" class="scatter-photo photo-6" data-parallax data-parallax-strength="9">
-                    <img src="photos/photo-7.webp" alt="Jervis and Hazel" class="scatter-photo photo-7" data-parallax data-parallax-strength="13">
-                    <img src="photos/photo-8.webp" alt="Jervis and Hazel" class="scatter-photo photo-8" data-parallax data-parallax-strength="11">
-                    <img src="photos/photo-9.webp" alt="Jervis and Hazel" class="scatter-photo photo-9" data-parallax data-parallax-strength="6">
-                    <img src="photos/photo-10.webp" alt="Jervis and Hazel" class="scatter-photo photo-10" data-parallax data-parallax-strength="15">
-                    <img src="photos/photo-11.webp" alt="Jervis and Hazel" class="scatter-photo photo-11" data-parallax data-parallax-strength="10">
-                    <img src="photos/photo-12.webp" alt="Jervis and Hazel" class="scatter-photo photo-12" data-parallax data-parallax-strength="8">
+                    <img src="photos/photo-1.webp" alt="Jervis and Hazel smiling together outdoors" class="scatter-photo photo-1" loading="lazy" decoding="async" data-parallax data-parallax-strength="10">
+                    <img src="photos/photo-2.webp" alt="Jervis and Hazel posing together in a garden portrait" class="scatter-photo photo-2" loading="lazy" decoding="async" data-parallax data-parallax-strength="14">
+                    <img src="photos/photo-3.webp" alt="Jervis and Hazel sharing a quiet moment together" class="scatter-photo photo-3" loading="lazy" decoding="async" data-parallax data-parallax-strength="8">
+                    <img src="photos/photo-4.webp" alt="Jervis and Hazel in a close portrait" class="scatter-photo photo-4" loading="lazy" decoding="async" data-parallax data-parallax-strength="12">
+                    <img src="photos/photo-5.webp" alt="Jervis and Hazel laughing together" class="scatter-photo photo-5" loading="lazy" decoding="async" data-parallax data-parallax-strength="7">
+                    <img src="photos/photo-6.webp" alt="Jervis and Hazel standing together in soft light" class="scatter-photo photo-6" loading="lazy" decoding="async" data-parallax data-parallax-strength="9">
+                    <img src="photos/photo-7.webp" alt="Jervis and Hazel sharing a sweet candid moment" class="scatter-photo photo-7" loading="lazy" decoding="async" data-parallax data-parallax-strength="13">
+                    <img src="photos/photo-8.webp" alt="Jervis and Hazel framed in an outdoor portrait" class="scatter-photo photo-8" loading="lazy" decoding="async" data-parallax data-parallax-strength="11">
+                    <img src="photos/photo-9.webp" alt="Jervis and Hazel walking together outdoors" class="scatter-photo photo-9" loading="lazy" decoding="async" data-parallax data-parallax-strength="6">
+                    <img src="photos/photo-10.webp" alt="Jervis and Hazel in a romantic portrait" class="scatter-photo photo-10" loading="lazy" decoding="async" data-parallax data-parallax-strength="15">
+                    <img src="photos/photo-11.webp" alt="Jervis and Hazel posing side by side" class="scatter-photo photo-11" loading="lazy" decoding="async" data-parallax data-parallax-strength="10">
+                    <img src="photos/photo-12.webp" alt="Jervis and Hazel captured in a candid portrait" class="scatter-photo photo-12" loading="lazy" decoding="async" data-parallax data-parallax-strength="8">
                 </div>
 
                 <div class="story-text-box">
@@ -146,7 +147,7 @@
                 </div>
                 <figure class="baby-photo-card">
                     <div class="baby-photo-frame">
-                        <img src="photos/Baby/ad33b878-6361-44c5-8608-09cd0851f9bf.jpg" alt="Ultrasound photo of our baby">
+                        <img src="photos/Baby/ad33b878-6361-44c5-8608-09cd0851f9bf.jpg" alt="Ultrasound photo of our baby" loading="lazy" decoding="async">
                     </div>
                 </figure>
             </div>
@@ -160,57 +161,60 @@
             <h2 class="section-title">Gallery</h2>
             <div class="gold-divider"></div>
             <p class="section-text gallery-intro">
-                A few moments from our story as we step into this new chapter together.
+                A small preview from our story. The full wedding album lives in one dedicated gallery for guests to browse.
             </p>
             <div class="gallery-grid">
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.1s;">
-                    <img src="photos/photo-1.webp" alt="Jervis and Hazel together">
+                    <img src="photos/photo-1.webp" alt="Jervis and Hazel together in an outdoor portrait" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.2s;">
-                    <img src="photos/photo-3.webp" alt="Jervis and Hazel smiling together">
+                    <img src="photos/photo-3.webp" alt="Jervis and Hazel smiling during a candid moment" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.3s;">
-                    <img src="photos/photo-5.webp" alt="Portrait of Jervis and Hazel">
+                    <img src="photos/photo-5.webp" alt="Portrait of Jervis and Hazel standing close together" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.4s;">
-                    <img src="photos/photo-7.webp" alt="Jervis and Hazel sharing a moment">
+                    <img src="photos/photo-7.webp" alt="Jervis and Hazel sharing a sweet moment" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.5s;">
-                    <img src="photos/photo-9.webp" alt="Jervis and Hazel outdoors">
+                    <img src="photos/photo-9.webp" alt="Jervis and Hazel walking together outdoors" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.6s;">
-                    <img src="photos/photo-11.webp" alt="Jervis and Hazel posing together">
+                    <img src="photos/photo-11.webp" alt="Jervis and Hazel posing together for a portrait" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.7s;">
-                    <img src="photos/photo-13.webp" alt="Jervis and Hazel during a candid moment">
+                    <img src="photos/photo-13.webp" alt="Jervis and Hazel during a candid portrait moment" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.8s;">
-                    <img src="photos/photo-14.webp" alt="Jervis and Hazel sharing a quiet smile">
+                    <img src="photos/photo-14.webp" alt="Jervis and Hazel sharing a quiet smile together" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 0.9s;">
-                    <img src="photos/photo-15.webp" alt="Jervis and Hazel in a portrait together">
+                    <img src="photos/photo-15.webp" alt="Jervis and Hazel in a warm portrait together" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1s;">
-                    <img src="photos/photo-16.webp" alt="Jervis and Hazel enjoying the moment">
+                    <img src="photos/photo-16.webp" alt="Jervis and Hazel enjoying a candid moment" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.1s;">
-                    <img src="photos/photo-17.webp" alt="Jervis and Hazel framed in a candid photo">
+                    <img src="photos/photo-17.webp" alt="Jervis and Hazel framed in a candid outdoor photo" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.2s;">
-                    <img src="photos/photo-18.webp" alt="Jervis and Hazel captured together outdoors">
+                    <img src="photos/photo-18.webp" alt="Jervis and Hazel captured together outdoors" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.3s;">
-                    <img src="photos/photo-19.webp" alt="Jervis and Hazel in a romantic portrait">
+                    <img src="photos/photo-19.webp" alt="Jervis and Hazel in a romantic portrait" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.4s;">
-                    <img src="photos/photo-20.webp" alt="Jervis and Hazel in a candid portrait together">
+                    <img src="photos/photo-20.webp" alt="Jervis and Hazel in a candid portrait together" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.5s;">
-                    <img src="photos/photo-21.webp" alt="Jervis and Hazel sharing another moment together">
+                    <img src="photos/photo-21.webp" alt="Jervis and Hazel sharing another joyful moment" loading="lazy" decoding="async">
                 </figure>
                 <figure class="gallery-card animate-on-scroll is-visible" style="transition-delay: 1.6s;">
-                    <img src="photos/photo-22.webp" alt="Jervis and Hazel in a newly added portrait">
+                    <img src="photos/photo-22.webp" alt="Jervis and Hazel in a newly added portrait" loading="lazy" decoding="async">
                 </figure>
+            </div>
+            <div class="gallery-actions">
+                <a class="gallery-link" href="/wedding/">Open the Wedding Photo Gallery</a>
             </div>
         </div>
     </section>
@@ -282,7 +286,7 @@
         <p class="date">Saturday, May 9, 2026</p>
     </footer>
 
-    <script src="script.js?v=20260516-3"></script>
+    <script src="script.js?v=20260517-9"></script>
 </body>
 
 </html>

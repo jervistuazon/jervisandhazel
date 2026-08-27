@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "node local-server.js --open",
     "serve": "node local-server.js",
+    "validate": "node scripts/validate-site.js",
     "start": "npm run dev"
   },
   "dependencies": {

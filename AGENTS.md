@@ -46,6 +46,17 @@ wedding/photos/full/photo-001.webp
 - Do not force-push, rewrite Git history, or run `sync_git.bat` unless the user explicitly asks to sync/push.
 - Avoid changing unrelated files. If the worktree is dirty, preserve user changes.
 
+## Agent Skills
+
+- Repo-scoped skill: `.agents/skills/wedding-site-maintenance/SKILL.md`.
+- Use that skill for root page edits, wedding gallery edits, photo import/update work, cache-busting, GitHub Pages deployment checks, local preview debugging, and visual QA.
+- Do not create additional repo skills unless a workflow becomes clearly repeatable and worth maintaining.
+- Useful available capabilities for this repo:
+  - Browser/in-app browser for local visual QA.
+  - Image generation only for requested mockups/placeholders, never to replace real wedding photos without permission.
+  - GitHub only for requested GitHub sync, PR, issue, or CI work.
+  - OpenAI docs only for OpenAI/Codex/API questions.
+
 ## Cache-Busting Rules
 
 GitHub Pages and browsers may serve stale static assets. When changing CSS, JS, or image assets that affect production, bump every relevant version string in the same change:
